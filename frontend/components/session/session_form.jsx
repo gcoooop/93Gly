@@ -17,7 +17,8 @@ class SessionForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.processForm(this.state);
+    this.props.processForm(this.state)
+      // .then( success => this.setState = { username: "", email: "", password: "" } );
   }
 
   render() {
@@ -25,9 +26,10 @@ class SessionForm extends React.Component {
     let formHeader = "Log in";
     let emailInput = null;
     let insteadLink = <Link to="/signup">Sign up</Link>;
+    let insteadSpan = <span>Don't have an account? {insteadLink}</span>
 
     if (this.props.formType === "signup") {
-      formHeader= "Sign up"
+      formHeader= "Join 93Gly"
       emailInput = (
         <label>
           Email
@@ -35,6 +37,7 @@ class SessionForm extends React.Component {
         </label>
       );
       insteadLink = <Link to="/login">Log in</Link>;
+      insteadSpan = <span>Already have an account? {insteadLink}</span>
     };
 
     return(
@@ -53,6 +56,7 @@ class SessionForm extends React.Component {
         </label>
         <button>{formHeader}</button>
       </form>
+      {insteadSpan}
     </div>
     );
   }
