@@ -29,7 +29,7 @@ export const login = user => {
     return SessionApiUtil.login(user)
       .then( 
         user => dispatch(receiveCurrentUser(user)),
-        errors => dispatch(receiveErrors(errors))
+        errors => dispatch(receiveErrors(errors.responseJSON))
       );
   };
 };
@@ -39,7 +39,7 @@ export const logout = () => {
     return SessionApiUtil.logout()
       .then( 
         () => dispatch(logoutCurrentUser()),
-        errors => dispatch(receiveErrors(errors))
+        errors => dispatch(receiveErrors(errors.responseJSON))
       );
   };
 };
@@ -49,7 +49,7 @@ export const signup = user => {
     return SessionApiUtil.signup(user)
       .then( 
         user => dispatch(receiveCurrentUser(user)), 
-        errors => dispatch(receiveErrors(errors))  
+        errors => dispatch(receiveErrors(errors.responseJSON))  
       );
   };
 };
