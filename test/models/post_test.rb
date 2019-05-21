@@ -1,18 +1,18 @@
 # == Schema Information
 #
-# Table name: photos
+# Table name: posts
 #
 #  id              :bigint           not null, primary key
 #  title           :string           not null
 #  caption         :string
-#  photographer_id :integer          not null
+#  photographer_id :integer
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
 
 require 'test_helper'
 
-class PhotoTest < ActiveSupport::TestCase
+class PostTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
