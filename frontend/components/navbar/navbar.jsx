@@ -6,7 +6,7 @@ const NavBar = props => {
   return (
     <nav>
       <ul className="nav-left">
-        <li>93Gly</li>
+        <li><Link to="/" id="logo">93Gly</Link></li>
         <li><Link to="/">Discover</Link></li>
       </ul>
       <NavBarRightContainer /> 
