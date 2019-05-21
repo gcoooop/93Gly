@@ -1,0 +1,76 @@
+.session-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f7f8fa;
+  height: calc(100vh - 50px);
+
+  form {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    width: 400px;
+    padding: 32px 40px;
+    box-sizing: border-box;
+    color: rgb(113, 118, 122);
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 2px;
+  }
+  
+  label {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 5px 0;
+  }
+  
+  button {
+    background-color: #34bf49;
+    color: white;
+    margin-top: 16px;
+    font-size: 16px;
+    border: 0;
+    border-radius: 3px;
+    padding: 8px 0;
+  }
+  
+  span, a {
+    font-size: 12px;
+  }
+  
+  span {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    a {
+      margin-left: 0.25em;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: rgb(0, 174, 255);
+  }
+  
+  input {
+    color: rgb(113, 118, 122);
+    padding: 8px;
+    font-size: 12px;
+    border-radius: 3px;
+    border: 1px solid rgb(228, 228, 228);
+  }
+  
+  h3 {
+    color:rgb(82, 85, 88);
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .errors {
+    color: red;
+  }
+
+}

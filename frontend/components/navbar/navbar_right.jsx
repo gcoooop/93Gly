@@ -5,11 +5,11 @@ const NavBarRight = ({ currentUser, logout }) => {
 
   let navRightLis;
   if (currentUser) {
-    navRightLis = <li onClick={logout}>Log out</li>
+    navRightLis = <li className="nav-logout" onClick={logout}>Log out</li>
   } else {
     navRightLis = [
-      <Link key={1} to="/login">Log in</Link>,
-      <Link key={2} to="/signup">Sign up</Link>
+      <li className="nav-login"><Link key={1} to="/login">Log in</Link></li>,
+      <li className="nav-signup"><Link key={2} to="/signup">Sign up</Link></li>
     ];
   };
 

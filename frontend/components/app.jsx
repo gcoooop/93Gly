@@ -10,7 +10,7 @@ const App = () => {
     <div>
       <NavBar />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <Route path="/login" component={LoginFormContainer} />
+      <AuthRoute path="/login" component={LoginFormContainer} />
     </div>
   );
 };

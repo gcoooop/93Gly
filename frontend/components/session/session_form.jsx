@@ -23,40 +23,43 @@ class SessionForm extends React.Component {
 
   render() {
     // login is the arbitrary "default" formType, if the formType is signup then the if block executes
-    let formHeader = "Log in";
+    let formHeader = "Log In to 93Gly";
+    let buttonText = "Log in";
+    let emailLabel = null;
     let emailInput = null;
-    let insteadLink = <Link to="/signup">Sign up</Link>;
+    let insteadLink = <Link to="/signup"> Sign up</Link>;
     let insteadSpan = <span>Don't have an account? {insteadLink}</span>
 
     if (this.props.formType === "signup") {
       formHeader= "Join 93Gly"
-      emailInput = (
-        <label>
-          Email
-          <input type="text" value={this.state.email} onChange={this.updateInput("email")} />
-        </label>
-      );
+      buttonText = "Sign up";
+      emailLabel = <label>Email</label>;
+      emailInput = <input type="text" value={this.state.email} onChange={this.updateInput("email")} />;
       insteadLink = <Link to="/login">Log in</Link>;
       insteadSpan = <span>Already have an account? {insteadLink}</span>
     };
 
+    const errors = this.props.errors.map( error => <p className="errors">{error}</p> )
+
     return(
-    <div className="session-form">
-      <h3>{formHeader}</h3> 
-      <p>{this.props.errors}</p>
+    <div className="session-page">
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Username
-          <input type="text" value={this.state.username} onChange={this.updateInput("username")} />
-        </label>
+        <h3>{formHeader}</h3> 
+
+        {errors}
+        
+        <label>Username</label>
+        <input type="text" value={this.state.username} onChange={this.updateInput("username")} />
+        
+        {emailLabel}
         {emailInput}
-        <label>
-          Password
-          <input type="password" value={this.state.password} onChange={this.updateInput("password")} />
-        </label>
-        <button>{formHeader}</button>
+        
+        <label>Password</label>
+        <input type="password" value={this.state.password} onChange={this.updateInput("password")} />
+        
+        <button>{buttonText}</button>
+        {insteadSpan}
       </form>
-      {insteadSpan}
     </div>
     );
   }

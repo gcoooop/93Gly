@@ -7,7 +7,7 @@ const NavBar = props => {
     <nav>
       <ul className="nav-left">
         <li>93Gly</li>
-        <li><Link to="#">Discover</Link></li>
+        <li><Link to="/">Discover</Link></li>
       </ul>
       <NavBarRightContainer /> 
     </nav>

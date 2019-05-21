@@ -1,0 +1,57 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 30px;
+  font-size: 16px;
+  height: 40px;
+
+  ul {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+
+  li {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.nav-left {
+  justify-content: flex-start;
+  
+  li {
+    margin-right: 15px;
+  }
+  a {
+    color: rgb(82, 85, 88);
+    font-size: 16px;
+  }
+}
+
+.nav-right {
+  justify-content: flex-end;
+  
+  li {
+    margin-left: 15px;
+  }
+}
+
+.nav-login {
+  color: rgb(8, 112, 209);
+  &:hover {
+    color: rgb(33, 124, 250);
+  }
+}
+
+.nav-signup {
+  background: rgb(8, 112, 209);
+  color: white;
+  height: 32px;
+  padding: 0 16px;
+  border-radius: 16px;
+  &:hover {
+    background: rgb(33, 124, 250);
+  }
+}
