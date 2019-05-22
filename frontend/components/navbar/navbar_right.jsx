@@ -1,26 +1,48 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import NavBarDropdown from "./navbar_dropdown";
 
-const NavBarRight = ({ currentUser, logout, demoUserLogin }) => {
+class NavBarRight extends React.Component {
+  constructor(props) {
+    super(props);
+    this.demoUser = { username: "earthling365", password: "password" };
+    this.dropdownShow = React.createRef();
+    this.handleClick = this.handleClick.bind(this);
+  }
 
-  const demoUser = { username: "earthling365", password: "password" };
+  handleClick() {
+    this.dropdownShow.current.toggleShow();
+  }
 
-  let navRightLis;
-  if (currentUser) {
-    navRightLis = <li className="nav-logout" onClick={logout}>Log out</li>
-  } else {
-    navRightLis = [
-      <li className="nav-demologin-a" key={0} onClick={() => demoUserLogin(demoUser)}>Demo Login</li>,
-      <li className="nav-login" key={1}><Link to="/login">Log in</Link></li>,
-      <li className="nav-signup" key={2}><Link to="/signup">Sign up</Link></li>
-    ];
-  };
-
-  return (
-    <ul className="nav-right">
-      {navRightLis}
-    </ul>
-  );
-};
+  render() {
+    const { currentUser, logout, demoUserLogin } = this.props;
+    let navRight;
+    if (currentUser) {
+      navRight = (
+      <ul className="nav-right">
+        <li className="nav-right-user" key={0} onClick={this.handleClick}>
+          User Image Here
+          <NavBarDropdown ref={this.dropdownShow} logout={logout}/>
+        </li>
+  
+      </ul>
+      );
+    } else {
+      navRight = (
+        <ul className="nav-right">
+          <li className="nav-demologin-a" onClick={() => demoUserLogin(this.demoUser)}>Demo Login</li>
+          <li className="nav-login"><Link to="/login">Log in</Link></li>
+          <li className="nav-signup"><Link to="/signup">Sign up</Link></li>
+        </ul>
+      );
+    };
+  
+    return (
+      <div className="nav-right-wrapper">
+        {navRight}
+      </div>
+    );
+  }
+}
 
 export default NavBarRight;

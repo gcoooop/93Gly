@@ -6,7 +6,7 @@ nav {
   min-height: 72px;
   box-sizing: border-box;
 
-  ul {
+  ul, div {
     display: flex;
     width: 100%;
     align-items: center;
@@ -15,6 +15,7 @@ nav {
   li {
     list-style: none;
     display: flex;
+    white-space: nowrap;
     align-items: center;
   }
 
@@ -80,3 +81,19 @@ nav {
     color: rgb(33, 124, 250);
   }
 }
+
+// logged in elements
+
+.nav-right-user {
+  position: relative;
+
+  .nav-right-dropdown {
+    position: absolute;
+    top: 24px;
+  }
+  
+  .hidden {
+    display: none;
+  }
+}
+

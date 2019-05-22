@@ -41,7 +41,7 @@ class SessionForm extends React.Component {
       insteadSpan = <span>Already have an account? {insteadLink}</span>
     };
 
-    const errors = this.props.errors.map( error => <p className="errors">{error}</p> )
+    const errors = this.props.errors.map( (error, idx) => <p key={idx} className="errors">{error}</p> )
 
     return(
     <div className="session-page">
