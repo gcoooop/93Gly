@@ -25,6 +25,7 @@ class SessionForm extends React.Component {
     // login is the arbitrary "default" formType, if the formType is signup then the if block executes
     let formHeader = "Log In to 93Gly";
     let buttonText = "Log in";
+    let usernameLabel = <label>Username or Email</label>;
     let emailLabel = null;
     let emailInput = null;
     let insteadLink = <Link to="/signup"> Sign up</Link>;
@@ -33,6 +34,7 @@ class SessionForm extends React.Component {
     if (this.props.formType === "signup") {
       formHeader= "Join 93Gly"
       buttonText = "Sign up";
+      usernameLabel = <label>Username</label>
       emailLabel = <label>Email</label>;
       emailInput = <input type="text" value={this.state.email} onChange={this.updateInput("email")} />;
       insteadLink = <Link to="/login">Log in</Link>;
@@ -48,7 +50,7 @@ class SessionForm extends React.Component {
 
         {errors}
         
-        <label>Username</label>
+        {usernameLabel}
         <input type="text" value={this.state.username} onChange={this.updateInput("username")} />
         
         {emailLabel}
