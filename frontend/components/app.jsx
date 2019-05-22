@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div>
       <NavBar />
-      <Route path="/" exact component={Splash} />
+      {/* <Route path="/" exact component={Splash} /> */}
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
     </div>
