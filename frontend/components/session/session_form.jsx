@@ -41,15 +41,15 @@ class SessionForm extends React.Component {
       insteadSpan = <span>Already have an account? {insteadLink}</span>
     };
 
-    const errors = this.props.errors.map( (error, idx) => <p key={idx} className="errors">{error}</p> )
+    // const errors = this.props.errors.map( (error, idx) => <p key={idx} className="errors">{error}</p> )
+    let errorClass;
+    if (this.props.errors.length) errorClass = "error";
 
     return(
     <div className="session-page">
-      <form onSubmit={this.handleSubmit}>
+      <form className={`session-form ${errorClass}`}onSubmit={this.handleSubmit}>
         <h3>{formHeader}</h3> 
 
-        {errors}
-        
         {usernameLabel}
         <input type="text" value={this.state.username} onChange={this.updateInput("username")} />
         

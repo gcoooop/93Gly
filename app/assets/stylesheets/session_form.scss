@@ -5,7 +5,7 @@
   background: #f7f8fa;
   height: calc(100vh - 50px);
 
-  form {
+  .session-form {
     display: flex;
     flex-direction: column;
     background: white;
@@ -75,8 +75,12 @@
     justify-content: center;
   }
 
-  .errors {
+  form.error > label {
     color: red;
+  }
+
+  form.error > input {
+    border: 1px solid red;
   }
 
 }
