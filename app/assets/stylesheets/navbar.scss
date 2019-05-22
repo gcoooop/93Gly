@@ -1,9 +1,10 @@
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 15px 30px;
+  padding: 16px 32px;
   font-size: 16px;
-  height: 40px;
+  min-height: 72px;
+  box-sizing: border-box;
 
   ul {
     display: flex;
@@ -22,7 +23,10 @@ nav {
   }
 
   #logo {
+    font-family: 'Michroma', sans-serif;
+    font-size: 18px;
     color: black;
+    padding-bottom: 4px;
     &:hover {
       color: rgb(33, 124, 250);
     }
@@ -34,19 +38,19 @@ nav {
   justify-content: flex-start;
   
   li {
-    margin-right: 15px;
+    margin-right: 16px;
   }
   a {
-    color: rgb(82, 85, 88);
+    color: #222222;
     font-size: 16px;
   }
 }
 
 .nav-right {
   justify-content: flex-end;
-  
+
   li {
-    margin-left: 15px;
+    margin-left: 16px;
   }
 }
 
@@ -61,6 +65,7 @@ nav {
   padding: 0 16px;
   border-radius: 16px;
   &:hover {
+    cursor: pointer;
     background: rgb(33, 124, 250);
   }
   a:hover {
