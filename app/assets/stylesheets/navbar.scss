@@ -17,6 +17,9 @@ nav {
     display: flex;
     white-space: nowrap;
     align-items: center;
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   a:hover {
@@ -66,7 +69,6 @@ nav {
   padding: 0 16px;
   border-radius: 16px;
   &:hover {
-    cursor: pointer;
     background: rgb(33, 124, 250);
   }
   a:hover {
@@ -77,7 +79,6 @@ nav {
 .nav-demologin-a {
   color: rgb(8, 112, 209);
   &:hover {
-    cursor: pointer;
     color: rgb(33, 124, 250);
   }
 }
@@ -86,10 +87,33 @@ nav {
 
 .nav-right-user {
   position: relative;
-
+  height: 32px;
+  width: 32px;
+  background-image: image-url("default_user.jpg");
+  background-size: cover;
+  background-position: center;
+  border-radius: 16px;
   .nav-right-dropdown {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.16), 0 0 4px rgba(0,0,0,0.08);
     position: absolute;
-    top: 24px;
+    top: 36px;
+    // right: 24px;
+    width: 100px;
+    padding: 8px 0;
+    li {
+      margin: 0;
+      box-sizing: border-box;
+      height: 36px;
+      width: 100%;
+      padding: 0 16px;
+      &:hover {
+        color: white;
+        background: rgb(8, 112, 209);
+      }
+    }
   }
   
   .hidden {
@@ -97,3 +121,10 @@ nav {
   }
 }
 
+.nav-right-plus {
+  height: 30px;
+  width: 30px;
+  background-image: image-url("plus_sign.svg");
+  background-size: cover;
+  background-position: center;
+}

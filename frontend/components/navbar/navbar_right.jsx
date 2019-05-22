@@ -21,10 +21,10 @@ class NavBarRight extends React.Component {
       navRight = (
       <ul className="nav-right">
         <li className="nav-right-user" key={0} onClick={this.handleClick}>
-          User Image Here
           <NavBarDropdown ref={this.dropdownShow} logout={logout}/>
         </li>
-  
+        <li className="nav-right-plus"></li>
+        {/* ^^^^ add click handler on this for redirect to add photo page ^^^^ */}
       </ul>
       );
     } else {
