@@ -9,6 +9,10 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentWillUnmount() {
+    this.props.clearErrors();
+  }
+
   updateInput(field) {
     return event => {
       this.setState({ [field]: event.target.value });
@@ -18,7 +22,6 @@ class SessionForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.processForm(this.state)
-      // .then( success => this.setState = { username: "", email: "", password: "" } );
   }
 
   render() {
@@ -41,7 +44,6 @@ class SessionForm extends React.Component {
       insteadSpan = <span>Already have an account? {insteadLink}</span>
     };
 
-    // const errors = this.props.errors.map( (error, idx) => <p key={idx} className="errors">{error}</p> )
     let errorClass;
     if (this.props.errors.length) errorClass = "error";
 
