@@ -64,3 +64,11 @@ nav {
     background: rgb(33, 124, 250);
   }
 }
+
+.nav-demologin-a {
+  color: rgb(8, 112, 209);
+  &:hover {
+    cursor: pointer;
+    color: rgb(33, 124, 250);
+  }
+}
