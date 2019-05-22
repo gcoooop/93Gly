@@ -1,0 +1,15 @@
+// font-family: 'Nanum Gothic Coding', monospace;
+
+.splash-slider {
+  display: flex;
+  align-items: center;
+}
+
+
+.splash-slider-image > img {
+  height: 500px;
+  width: 500px;
+  content: image_url("Tre-Cime-di-Lavaredo-mountains-with-Milky-Way.jpg");
+  object-fit: cover;
+}
+
