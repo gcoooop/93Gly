@@ -31,6 +31,7 @@ nav {
     font-size: 18px;
     color: black;
     padding-bottom: 4px;
+    margin-right: 6px;
     &:hover {
       color: rgb(33, 124, 250);
     }
@@ -94,12 +95,14 @@ nav {
   background-position: center;
   border-radius: 16px;
   .nav-right-dropdown {
+    cursor: default;
     display: flex;
     flex-direction: column;
     background: white;
     box-shadow: 0 4px 12px rgba(0,0,0,0.16), 0 0 4px rgba(0,0,0,0.08);
     position: absolute;
     top: 36px;
+    border-radius: 8px;
     // right: 24px;
     width: 100px;
     padding: 8px 0;
@@ -125,6 +128,7 @@ nav {
   height: 30px;
   width: 30px;
   background-image: image-url("plus_sign.svg");
-  background-size: cover;
+  background-size: 75%;
+  background-repeat: no-repeat;
   background-position: center;
 }

@@ -6,13 +6,29 @@ class NavBarRight extends React.Component {
   constructor(props) {
     super(props);
     this.demoUser = { username: "earthling365", password: "password" };
-    this.dropdownShow = React.createRef();
-    this.handleClick = this.handleClick.bind(this);
+    this.handleDropdownClick = this.handleDropdownClick.bind(this);
+    this.handleOutsideClick = this.handleOutsideClick.bind(this);
+    this.state = { dropdownShow: "hidden" };
   }
 
-  handleClick() {
-    this.dropdownShow.current.toggleShow();
+  handleOutsideClick(event) {
+    const dropdownShow = "hidden";
+    if (this.state.dropdownShow === "active") this.setState({ dropdownShow });
   }
+
+  componentDidUpdate() {
+    if (this.state.dropdownShow === "active") {
+      document.addEventListener("click", this.handleOutsideClick);
+    } else {
+      document.removeEventListener("click", this.handleOutsideClick);
+    };
+  }
+
+  handleDropdownClick() {
+    const dropdownShow = (this.state.dropdownShow === "hidden" ? "active" : "hidden");
+    this.setState({ dropdownShow });
+  }
+
 
   render() {
     const { currentUser, logout, demoUserLogin } = this.props;
@@ -20,8 +36,10 @@ class NavBarRight extends React.Component {
     if (currentUser) {
       navRight = (
       <ul className="nav-right">
-        <li className="nav-right-user" key={0} onClick={this.handleClick}>
-          <NavBarDropdown ref={this.dropdownShow} logout={logout}/>
+        <li className="nav-right-user" key={0} onClick={this.handleDropdownClick}>
+          <ul className={`nav-right-dropdown ${this.state.dropdownShow}`}>
+            <li onClick={logout}>Log Out</li>
+          </ul>
         </li>
         <li className="nav-right-plus"></li>
         {/* ^^^^ add click handler on this for redirect to add photo page ^^^^ */}
