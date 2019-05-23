@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Alert from "./alert";
+import { clearErrors } from "../../actions/session_actions";
 
 const mstp = state => {
   return {
@@ -7,4 +8,4 @@ const mstp = state => {
   };
 };
 
-export default connect(mstp, null)(Alert);
+export default connect(mstp, mdtp)(Alert);

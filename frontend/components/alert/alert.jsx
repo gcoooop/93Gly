@@ -4,11 +4,17 @@ class Alert extends React.Component {
   constructor(props) {
     super(props);
     this.dismissAlerts = this.dismissAlerts.bind(this);
-    this.state = { alertsShow: "active" };
+    this.state = { alertsShow: "hidden" };
   }
 
-  componentWillReceiveProps() {
-    if (this.props.errors.length) this.setState({ alertsShow: "active" });
+  componentDidUpdate(prevProps, prevState) {
+    if (this.props.errors !== prevProps.errors) {
+      if (this.props.errors.length && this.state.alertsShow === "hidden") {
+        this.setState({ alertsShow: "active" });
+      } else if (this.props.errors.length === 0 && this.props.errors !== prevProps.errors) {
+        this.setState({ alertsShow: "hidden" });
+      }
+    }
   }
 
   dismissAlerts() {
@@ -17,8 +23,6 @@ class Alert extends React.Component {
 
   render() {
     const { errors } = this.props;
-    if (!errors.length) return null;
-
     const errorLis = errors.map( (error, idx) => <li key={idx}>{error}</li>)
     return (
       <div className={`alert ${this.state.alertsShow}`}>

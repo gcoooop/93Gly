@@ -2,6 +2,8 @@
   z-index: 9999;
   position: fixed;
   left: 50%;
+  transform: translateY(0%);
+  transition: transform 0.5s linear;
   width: 450px;
   margin-left: -225px;
   background: rgb(235, 0, 0);
@@ -44,5 +46,6 @@
 }
 
 .hidden {
-  display: none;
+  transition: transform 0.5s linear;
+  transform: translateY(-100%);
 }
