@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import NavBarRight from "./navbar_right";
-import { logout } from "../../actions/session_actions";
+import { logout, login } from "../../actions/session_actions";
 
 const mstp = state => {
   return {
@@ -10,7 +10,8 @@ const mstp = state => {
 
 const mdtp = dispatch => {
   return {
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    demoUserLogin: (demoUser) => dispatch(login(demoUser))
   };
 };
 

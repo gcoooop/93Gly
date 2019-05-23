@@ -5,7 +5,7 @@
   background: #f7f8fa;
   height: calc(100vh - 50px);
 
-  form {
+  .session-form {
     display: flex;
     flex-direction: column;
     background: white;
@@ -20,17 +20,22 @@
   label {
     font-size: 14px;
     font-weight: 400;
-    margin: 5px 0;
   }
   
   button {
+    display: flex;
+    justify-content: center;
     background-color: #34bf49;
     color: white;
-    margin-top: 16px;
+    height: 38px;
     font-size: 16px;
-    border: 0;
+    border: 1px solid #34bf49;
+    box-sizing: content-box;
     border-radius: 3px;
-    padding: 8px 0;
+    &:hover {
+      cursor: pointer;
+      background-color: #41cb56;
+    }
   }
   
   span, a {
@@ -53,24 +58,29 @@
   
   input {
     color: rgb(113, 118, 122);
-    padding: 8px;
+    padding: 8px 10px;
     font-size: 12px;
     border-radius: 3px;
     border: 1px solid rgb(228, 228, 228);
+    margin-top: 6px;
+    margin-bottom: 16px;
   }
   
   h3 {
     color:rgb(82, 85, 88);
     font-size: 24px;
     font-weight: 400;
-    margin: 0;
-    margin-bottom: 16px;
+    margin-bottom: 20px;
     display: flex;
     justify-content: center;
   }
 
-  .errors {
+  form.error > label {
     color: red;
+  }
+
+  form.error > input {
+    border: 1px solid red;
   }
 
 }
