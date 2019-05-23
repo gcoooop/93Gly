@@ -3,13 +3,46 @@
 .splash-slider {
   display: flex;
   align-items: center;
+  padding: 64px;
 }
 
 
-.splash-slider-image > img {
+.splash-slider-image { 
+  img {
   height: 500px;
   width: 500px;
+  margin-right: 16px;
   content: image_url("Tre-Cime-di-Lavaredo-mountains-with-Milky-Way.jpg");
   object-fit: cover;
+  }
 }
 
+.splash-slider-caption {
+  margin-left: 16px;
+  h3 {
+    color: black;
+    font-size: 24px;
+  }
+  h1 {
+    color: black;
+    font-size: 48px;
+  }
+  p {
+    color: black;
+    font-size: 18px;
+  }
+  a {
+    box-sizing: border-box;
+    background: white;
+    height: 60px;
+    min-width: 218px;
+    font-size: 24px;
+    padding: 0 16px;
+    margin-top: 32px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 2px 6px, rgba(0, 0, 0, 0.08) 0px 0px 2px;
+    border-radius: 16px;
+    span {
+      line-height: 16px;
+    }
+  }
+}
