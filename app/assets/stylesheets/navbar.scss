@@ -1,7 +1,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-  padding: 16px 32px;
+  padding: 16px 64px;
   font-size: 16px;
   min-height: 72px;
   box-sizing: border-box;
@@ -103,7 +103,6 @@ nav {
     position: absolute;
     top: 36px;
     border-radius: 8px;
-    // right: 24px;
     width: 100px;
     padding: 8px 0;
     li {
