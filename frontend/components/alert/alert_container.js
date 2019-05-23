@@ -8,4 +8,4 @@ const mstp = state => {
   };
 };
 
-export default connect(mstp, mdtp)(Alert);
+export default connect(mstp, null)(Alert);
