@@ -1,17 +1,15 @@
 // font-family: 'Nanum Gothic Coding', monospace;
-nav {
-  background: rgba(0,0,0,0);
-}
-
 .splash-slider {
   display: flex;
   align-items: center;
   box-sizing: border-box;
   padding: 0 64px;
   padding-top: 64px;
-  background: image_url("seamless_earth_path_teal.svg");
-  background-position-x: -80px;
-  background-size: 165%;
+  // background: #18d6c0;
+  background: #24cbb6;
+  background-image: image_url("seamless_earth_path_white2.svg");
+  background-size: auto 134%;
+  background-position-y: -150px;
 }
 
 
@@ -70,6 +68,46 @@ nav {
     &:hover {
       cursor: pointer;
       color: rgb(41, 134, 247);
+    }
+  }
+}
+
+// splash page navbar
+
+.splash-nav {
+  // background: #18d6c0;
+  background: #24cbb6;
+    
+  .nav-left a:hover {
+    color:rgb(82, 85, 88);
+  }
+  
+  #logo:hover {
+    color: black;
+  }
+
+  .nav-right {
+    li {
+      color: black;
+      font-weight: 700;
+      &:hover {
+        color:rgb(82, 85, 88);
+      }
+    }
+    a:hover {
+        color:rgb(82, 85, 88);
+    }
+  }
+
+  .nav-signup {
+    border: 2px solid black;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    line-height: 0;
+    &:hover {
+      border: 2px solid rgb(82, 85, 88);
+      color:rgb(82, 85, 88);
     }
   }
 }

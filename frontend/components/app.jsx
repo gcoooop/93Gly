@@ -12,7 +12,7 @@ const App = () => {
   return (
     <div>
       <AlertContainer />
-      <NavBar />
+      <Route path="/" component={NavBar} />
       <Route path="/" exact component={Splash} />
       {/* <Route path="/" exact component={Footer} /> */}
       <AuthRoute path="/signup" component={SignupFormContainer} />
