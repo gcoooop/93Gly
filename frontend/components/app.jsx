@@ -9,17 +9,20 @@ import SignupFormContainer from "./session/signup_form_container";
 import LoginFormContainer from "./session/login_form_container";
 import PostIndexContainer from "./posts/post_index_container";
 import PostShowContainer from "./posts/post_show_container";
-
+import Manage from "./profile/manage";
+import ModalContainer from "./modal/modal_container";
 const App = () => {
   return (
     <div>
       <AlertContainer />
+      <ModalContainer />
       <Route path="/" component={NavBar} />
       <AuthRoute path="/" exact component={Splash} />
-      <ProtectedRoute path="/posts" exact component={PostIndexContainer} />
-      <ProtectedRoute path="/posts/:postId" component={PostShowContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
+      <ProtectedRoute path="/posts" exact component={PostIndexContainer} />
+      <ProtectedRoute path="/posts/:postId" component={PostShowContainer} />
+      <ProtectedRoute path="/manage" component={Manage} />
       {/* <Route path="/" exact component={Footer} /> */}
     </div>
   );
