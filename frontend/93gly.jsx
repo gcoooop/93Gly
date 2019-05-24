@@ -2,6 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import configureStore from "./store/store";
 import Root from "./components/root";
+// import { fetchPosts, fetchPost, createPost, updatePost, removePost } from "./actions/post_actions";
+
+// window.fetchPosts = fetchPosts;
+// window.fetchPost = fetchPost;
+// window.createPost = createPost;
+// window.updatePost = updatePost;
+// window.removePost = removePost;
 
 document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
