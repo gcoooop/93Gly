@@ -5,7 +5,6 @@ export const RECEIEVE_POST = "RECEIEVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
 
 export const receivePosts = posts => {
-  debugger
   return {
     type: RECEIEVE_POSTS,
     posts

@@ -8,17 +8,19 @@ import NavBar from "./navbar/navbar";
 import SignupFormContainer from "./session/signup_form_container";
 import LoginFormContainer from "./session/login_form_container";
 import PostIndexContainer from "./posts/post_index_container";
+import PostShowContainer from "./posts/post_show_container";
 
 const App = () => {
   return (
     <div>
       <AlertContainer />
       <Route path="/" component={NavBar} />
-      <ProtectedRoute path="/posts" component={PostIndexContainer} />
       <AuthRoute path="/" exact component={Splash} />
-      {/* <Route path="/" exact component={Footer} /> */}
+      <ProtectedRoute path="/posts" exact component={PostIndexContainer} />
+      <ProtectedRoute path="/posts/:postId" component={PostShowContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
       <AuthRoute path="/login" component={LoginFormContainer} />
+      {/* <Route path="/" exact component={Footer} /> */}
     </div>
   );
 };
