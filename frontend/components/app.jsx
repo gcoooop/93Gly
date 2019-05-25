@@ -9,8 +9,9 @@ import SignupFormContainer from "./session/signup_form_container";
 import LoginFormContainer from "./session/login_form_container";
 import PostIndexContainer from "./posts/post_index_container";
 import PostShowContainer from "./posts/post_show_container";
-import Manage from "./profile/manage";
+import ManageContainer from "./profile/manage_container";
 import ModalContainer from "./modal/modal_container";
+
 const App = () => {
   return (
     <div>
@@ -22,7 +23,7 @@ const App = () => {
       <AuthRoute path="/login" component={LoginFormContainer} />
       <ProtectedRoute path="/posts" exact component={PostIndexContainer} />
       <ProtectedRoute path="/posts/:postId" component={PostShowContainer} />
-      <ProtectedRoute path="/manage" component={Manage} />
+      <ProtectedRoute path="/manage" component={ManageContainer} />
       {/* <Route path="/" exact component={Footer} /> */}
     </div>
   );

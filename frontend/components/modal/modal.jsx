@@ -4,7 +4,7 @@ import CreatePostFormContainer from "../posts/create_post_form_container";
 const Modal = ({ modal, closeModal }) => {
   let component;
   switch (modal) {
-    case "createPostFormContainer":
+    case "CreatePostFormContainer":
       component = <CreatePostFormContainer />;
       break;
     default:
