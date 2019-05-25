@@ -9,9 +9,9 @@ class PostIndex extends React.Component {
   render() {
     const postIndexItems = this.props.posts.map( post => <PostIndexItem key={post.id} post={post} />);
     return (
-      <div className="posts-grid">
+      <section className="posts-grid">
         {postIndexItems}
-      </div>
+      </section>
     );
   }
 } 
