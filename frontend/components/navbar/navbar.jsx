@@ -2,8 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import NavBarRightContainer from "./navbar_right_container";
 
-const NavBar = (ownProps) => {
-  const splashStyling = ( ownProps.location.pathname === "/" ? "splash-nav" : "");
+const NavBar = (props) => {
+  const splashStyling = ( props.location.pathname === "/" ? "splash-nav" : "");
   return (
     <nav className={splashStyling}>
       <ul className="nav-left">
