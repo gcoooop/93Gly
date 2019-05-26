@@ -1,8 +1,14 @@
 import React from "react";
 
 class PostShow extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { post: null };
+  }
+
   componentDidMount() {
-    this.props.fetchPost(this.props.match.params.postId);
+    this.props.fetchPost(this.props.match.params.postId)
+      .then( post => this.setState({ post }));
   }
 
   componentDidUpdate(prevProps) {
@@ -19,7 +25,9 @@ class PostShow extends React.Component {
     
     return (
       <div>
-        {/* wrap in figure with fig caption */}
+        <figure>
+          <img src={post.photoUrl}/>
+        </figure>
         {post.title}
         {post.caption}
       </div>

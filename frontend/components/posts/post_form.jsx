@@ -12,7 +12,19 @@ class PostForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.props.processForm(this.state);
+    const formData = new FormData();
+    formData.append("post[title]", this.state.title);
+    formData.append("post[caption]", this.state.caption);
+    if (this.state.imageFile) {
+      formData.append("post[photo]", this.state.imageFile);
+    }
+    $.ajax({
+      method: "POST",
+      url: "/api/posts",
+      data: formData,
+      contentType: false,
+      processData: false
+    });
   }
 
   updateInput(field) {
