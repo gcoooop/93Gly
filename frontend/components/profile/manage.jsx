@@ -14,7 +14,7 @@ class Manage extends React.Component {
         <div onClick={() => this.props.openModal("CreatePostFormContainer")}>Upload to Profile</div>
         <aside></aside>
         <PostIndexContainer /> {/* pass in function as props to get selected elements to store in state? */}
-        {/* <PostEditFormContainer />  */}
+        <PostEditFormContainer /> 
       </div>
     );
   }
