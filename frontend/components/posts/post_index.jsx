@@ -2,12 +2,29 @@ import React from "react";
 import PostIndexItem from "./post_index_item";
 
 class PostIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleSelected = this.toggleSelected.bind(this);
+  }
+  
   componentDidMount() {
     this.props.fetchPosts();
   }
 
+  toggleSelected(postId) {
+    return (event) => {
+      this.props.toggleSelected(postId);
+    };
+  }
+
   render() {
-    const postIndexItems = this.props.posts.map( post => <PostIndexItem key={post.id} post={post} />);
+    const postIndexItems = this.props.posts.map( post => 
+      <PostIndexItem 
+        key={post.id} 
+        post={post} 
+        toggleSelected={this.toggleSelected(post.id)} 
+        selected={ this.props.selectedPosts.includes(post.id) ? "selected" : "" }
+      />);
     return (
       <section className="posts-grid">
         {postIndexItems}

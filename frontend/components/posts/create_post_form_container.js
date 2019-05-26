@@ -6,7 +6,7 @@ import { closeModal } from "../../actions/modal_actions";
 const mstp = state => {
   return {
     post: { title: "", caption: "" },
-    formType: "create"
+    uploadStatus: "waiting"
   };
 };
 
