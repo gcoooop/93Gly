@@ -23,13 +23,8 @@ class EditPostForm extends React.Component {
 
   updateSelection(post) {
     return event => {
-      if (this.state.id) {
-        this.props.updatePostEntity(this.state);
-        if (this.state.id === post.id) {
-          this.setState({ id: null, title: "", caption: "" });
-        } else {
-          this.setState( post );
-        }
+      if (this.state.id === post.id) {
+        this.setState({ id: null, title: "", caption: "" });
       } else {
         this.setState( post );
       }
