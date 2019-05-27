@@ -3,10 +3,9 @@ import * as PostApiUtil from "../util/post_util";
 export const RECEIEVE_POSTS = "RECEIEVE_POSTS";
 export const RECEIEVE_POST = "RECEIEVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
-export const UPDATE_POST_ENTITY = "UPDATE_POST_ENTITY";
 export const CREATE_UPLOADED_POST_ENTITY = "CREATE_UPLOADED_POST_ENTITY";
-export const UPDATE_UPLOADED_POST_ENTITY = "UPDATE_UPLOADED_POST_ENTITY";
 export const DELETE_UPLOADED_POST_ENTITY = "DELETE_UPLOADED_POST_ENTITY";
+export const CLEAR_UPLOADED_POST_ENTITIES = "CLEAR_UPLOADED_POST_ENTITIES";
 
 export const receivePosts = posts => {
   return {
@@ -29,13 +28,6 @@ export const removePost = post => {
   };
 };
 
-export const updatePostEntity = post => {
-  return {
-    type: UPDATE_POST_ENTITY,
-    post
-  };
-};
-
 export const createUploadedPostEntity = post => {
   return {
     type: CREATE_UPLOADED_POST_ENTITY,
@@ -43,12 +35,6 @@ export const createUploadedPostEntity = post => {
   };
 };
 
-export const updateUploadedPostEntity = post => {
-  return {
-    type: UPDATE_UPLOADED_POST_ENTITY,
-    post
-  };
-};
 
 export const deleteUploadedPostEntity = id => {
   return {
@@ -57,6 +43,11 @@ export const deleteUploadedPostEntity = id => {
   };
 };
 
+export const clearUploadedPostEntities = () => {
+  return {
+    type: CLEAR_UPLOADED_POST_ENTITIES
+  };
+};
 
 export const fetchPosts = () => {
   return dispatch => {

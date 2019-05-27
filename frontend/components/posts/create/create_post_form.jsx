@@ -4,11 +4,21 @@ import CreatePostItem from "./create_post_item";
 class CreatePostForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { selectedPost: { title: "", caption: "", photoUrl: "", photoFile: "" }, uploadStatus: "waiting" };
+    this.state = { 
+      selectedPost: { idx: "", title: "", caption: "", photoUrl: "", photoFile: "" }, 
+      uploadedPostsCount: 0,
+      uploadStatus: "waiting" 
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInput = this.updateInput.bind(this);
     this.updateFileInput = this.updateFileInput.bind(this);
+    this.closeWindow = this.closeWindow.bind(this);
+  }
+
+  closeWindow(event) {
+    this.props.clearUploadedPostEntities();
+    this.props.closeModal();
   }
 
   handleSubmit(event) {
@@ -34,9 +44,11 @@ class CreatePostForm extends React.Component {
   }
 
   updateInput(field) {
-    let that = this;
     return event => {
-      that.setState({ selectedPost: {[field]: event.target.value} });
+      const { selectedPost } = this.state;
+      const currentState = selectedPost;
+      currentState[field] = event.target.value;
+      this.setState({ selectedPost: currentState });
     };
   }
 
@@ -45,9 +57,19 @@ class CreatePostForm extends React.Component {
     const reader = new FileReader();
     const file = event.target.files[0];
     reader.onloadend = () => {
-      this.props.createUploadedPostEntity({ photoUrl: reader.result, photoFile: file, title: "", caption: "" });
+      this.props.createUploadedPostEntity({ 
+        photoUrl: reader.result, 
+        photoFile: file, 
+        idx: this.state.uploadedPostsCount, 
+        title: "", 
+        caption: "" 
+      });
       const { uploadedPosts } = this.props;
-      this.setState({ selectedPost: uploadedPosts[uploadedPosts.length - 1], uploadStatus: "loaded" });
+      this.setState({ 
+        selectedPost: uploadedPosts[this.state.uploadedPostsCount], 
+        uploadedPostsCount: this.state.uploadedPostsCount + 1, 
+        uploadStatus: "loaded" 
+      });
     };
     
     if (file) {
@@ -59,9 +81,8 @@ class CreatePostForm extends React.Component {
 
   updateSelection(post) {
     return event => {
-      if (this.state.selectedPost) {
-        this.props.updateUploadedPostEntity(this.state.selectedPost);
-        if (this.state.selectedPost === post) {
+      if (this.state.selectedPost.idx) {
+        if (this.state.selectedPost.idx === post.idx) {
           this.setState({ selectedPost: null });
         } else {
           this.setState({ selectedPost: post });
@@ -73,11 +94,11 @@ class CreatePostForm extends React.Component {
   }
 
   render() {
-    const { uploadStatus, selectedPost } = this.state;
+    const { uploadStatus } = this.state;
     if (uploadStatus === "waiting") {
       return (
         <div className="post-uploader">
-          <div onClick={this.props.closeModal} className="close-x">&times;</div>
+          <div onClick={this.closeWindow} className="close-x">&times;</div>
           <input type="file" onChange={this.updateFileInput} />
         </div>
       );
@@ -90,16 +111,15 @@ class CreatePostForm extends React.Component {
       );
 
     } else if (uploadStatus === "loaded") {
-      const createPostItems = this.props.uploadedPosts.map( (post, idx) => 
+      const createPostItems = Object.values(this.props.uploadedPosts).map( post => 
         <CreatePostItem 
-          key={idx}
-          index={idx}
+          key={post.idx}
           post={post} 
           selected={ post === this.state.selectedPost ? "selected" : ""} 
           updateSelection={this.updateSelection(post)}
         /> 
       );
-      return (
+        return (
         <div className="post-uploader">
           {createPostItems}
           <input type="file" onChange={this.updateFileInput} />
@@ -112,7 +132,7 @@ class CreatePostForm extends React.Component {
               <button onClick={this.handleSubmit}>Submit</button>
             </form>
           </div>
-          <div onClick={this.props.closeModal} className="close-x">&times;</div>
+          <div onClick={this.closeWindow} className="close-x">&times;</div>
         </div>
       );
 
