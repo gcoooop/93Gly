@@ -1,0 +1,68 @@
+import React from "react";
+import EditPostItem from "./edit_post_item";
+
+class EditPostForm extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { id: null, title: "", caption: ""};
+
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateInput = this.updateInput.bind(this);
+  }
+  
+  handleSubmit(event) {
+    event.preventDefault();
+    this.props.processForm(this.state);
+  }
+
+  updateInput(field) {
+    return event => {
+      this.setState({ [field]: event.target.value });
+    };
+  }
+
+  updateSelection(post) {
+    return event => {
+      if (this.state.id) {
+        this.props.updatePostEntity(this.state);
+        if (this.state.id === post.id) {
+          this.setState({ id: null, title: "", caption: "" });
+        } else {
+          this.setState( post );
+        }
+      } else {
+        this.setState( post );
+      }
+    };
+  }
+
+  render() {
+    const editPostItems = this.props.posts.map( post => 
+      <EditPostItem 
+        key={post.id}
+        post={post} 
+        selected={ post.id === this.state.id ? "selected" : ""} 
+        updateSelection={this.updateSelection(post)}
+      /> 
+    );
+    return (
+      <div className="post-editor">
+        <aside></aside>
+        <div className="post-items-wrapper">
+          {editPostItems}
+        </div>
+        <div className="form-wrapper">
+          <form className="post-form">
+            <label>Title</label>
+            <input type="text" value={this.state.title} onChange={this.updateInput("title")}/>
+            <label>Caption</label>
+            <input type="text" value={this.state.caption} onChange={this.updateInput("caption")}/>
+            <button onClick={this.handleSubmit}>Submit</button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+}
+
+export default EditPostForm;

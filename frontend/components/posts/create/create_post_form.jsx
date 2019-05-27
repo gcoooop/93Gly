@@ -1,11 +1,10 @@
 import React from "react";
-import PostFormEditPane from "./post_form_edit_pane";
 
 class CreatePostForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = { posts: [], uploadStatus: "waiting" };
-    
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInput = this.updateInput.bind(this);
     this.updateFileInput = this.updateFileInput.bind(this);
@@ -74,7 +73,7 @@ class CreatePostForm extends React.Component {
       return (
         <div className="post-uploader">
           <img src={post.imageUrl}/>
-          <PostFormEditPane posts={this.props.post} updateInput={this.updateInput} handleSubmit={this.handleSubmit}/>
+          {/* <PostFormEditPane posts={this.props.post} updateInput={this.updateInput} handleSubmit={this.handleSubmit}/> */}
           <div onClick={this.props.closeModal} className="close-x">&times;</div>
         </div>
       );

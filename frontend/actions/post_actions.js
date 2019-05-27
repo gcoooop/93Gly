@@ -3,6 +3,7 @@ import * as PostApiUtil from "../util/post_util";
 export const RECEIEVE_POSTS = "RECEIEVE_POSTS";
 export const RECEIEVE_POST = "RECEIEVE_POST";
 export const REMOVE_POST = "REMOVE_POST";
+export const UPDATE_POST_ENTITY = "UPDATE_POST_ENTITY";
 
 export const receivePosts = posts => {
   return {
@@ -24,6 +25,14 @@ export const removePost = post => {
     postId: post.id
   };
 };
+
+export const updatePostEntity = post => {
+  return {
+    type: UPDATE_POST_ENTITY,
+    post
+  };
+};
+
 
 export const fetchPosts = () => {
   return dispatch => {

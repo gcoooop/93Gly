@@ -1,5 +1,5 @@
 import React from "react";
-import CreatePostFormContainer from "../posts/create_post_form_container";
+import CreatePostFormContainer from "../posts/create/create_post_form_container";
 
 const Modal = ({ modal, closeModal }) => {
   let component;
