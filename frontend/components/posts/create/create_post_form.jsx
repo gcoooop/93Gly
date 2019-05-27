@@ -24,23 +24,21 @@ class CreatePostForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.setState({ uploadStatus: "publishing" });
-    const formData = new FormData();
-
-    formData.append("post[title]", this.state.post.title);
-    formData.append("post[caption]", this.state.post.caption);
-    if (this.state.photoFile) {
-      formData.append("post[photo]", this.state.post.photoFile);
-    }
-
-    $.ajax({
-      method: "POST",
-      url: "/api/posts",
-      data: formData,
-      contentType: false,
-      processData: false
-    }).then(
-      () => this.props.closeModal()
-    );
+    
+    Object.values(this.props.uploadedPosts).forEach( (post, idx) => {
+      const formData = new FormData();
+      formData.append("post[title]", post.title);
+      formData.append("post[caption]", post.caption);
+      if (post.photoFile) {
+        formData.append("post[photo]", post.photoFile);
+      }
+      if (idx < this.props.uploadedPosts.length - 1)
+        this.props.processForm(formData);
+        else {
+          this.props.processForm(formData)
+            .then(() => this.props.closeModal());
+      }
+    });
   }
 
   updateInput(field) {
@@ -83,7 +81,8 @@ class CreatePostForm extends React.Component {
     return event => {
       if (this.state.selectedPost.idx) {
         if (this.state.selectedPost.idx === post.idx) {
-          this.setState({ selectedPost: null });
+          const defaultState = { idx: "", title: "", caption: "", photoUrl: "", photoFile: "" };
+          this.setState({ selectedPost: defaultState });
         } else {
           this.setState({ selectedPost: post });
         }
@@ -119,7 +118,7 @@ class CreatePostForm extends React.Component {
           updateSelection={this.updateSelection(post)}
         /> 
       );
-        return (
+      return (
         <div className="post-uploader">
           {createPostItems}
           <input type="file" onChange={this.updateFileInput} />

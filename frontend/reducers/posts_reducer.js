@@ -1,4 +1,4 @@
-import { RECEIEVE_POSTS, RECEIEVE_POST, REMOVE_POST, UPDATE_POST_ENTITY } from "../actions/post_actions";
+import { RECEIEVE_POSTS, RECEIEVE_POST, REMOVE_POST } from "../actions/post_actions";
 
 const PostsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -16,12 +16,12 @@ const PostsReducer = (state = {}, action) => {
       delete newState[action.postId];
       return newState;
 
-    case UPDATE_POST_ENTITY:
-      const updatedPost = state[action.post.id];
-      updatedPost.title = action.post.title;
-      updatedPost.caption = action.post.caption;
-      const updatedEntity = { [updatedPost.id]: updatedPost };
-      return Object.assign({}, state, updatedEntity);
+    // case UPDATE_POST_ENTITY:
+    //   const updatedPost = state[action.post.id];
+    //   updatedPost.title = action.post.title;
+    //   updatedPost.caption = action.post.caption;
+    //   const updatedEntity = { [updatedPost.id]: updatedPost };
+    //   return Object.assign({}, state, updatedEntity);
 
     default:
       return state;
