@@ -1,4 +1,4 @@
-import { UPDATE_FILTER, REMOVE_FILTER_VALUE, CLEAR_FILTERS } from "../actions/filter_actions";
+import { UPDATE_FILTER, CLEAR_FILTERS } from "../actions/filter_actions";
 
 const FiltersReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -7,11 +7,6 @@ const FiltersReducer = (state = {}, action) => {
     case UPDATE_FILTER:
       const receivedFilter = { [action.filter]: action.value };
       return Object.assign({}, state, receivedFilter);
-
-    case REMOVE_FILTER_VALUE:
-      const newState = Object.assign({}, state);
-      delete newState[action.filter][action.value];
-      return newState;
 
     case CLEAR_FILTERS:
       return {};

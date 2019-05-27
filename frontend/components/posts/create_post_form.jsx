@@ -1,10 +1,11 @@
 import React from "react";
 import PostFormEditPane from "./post_form_edit_pane";
 
-class PostForm extends React.Component {
+class CreatePostForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { post: this.props.post, uploadStatus: this.props.uploadStatus };
+    this.state = { posts: [], uploadStatus: "waiting" };
+    
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInput = this.updateInput.bind(this);
     this.updateFileInput = this.updateFileInput.bind(this);
@@ -14,35 +15,22 @@ class PostForm extends React.Component {
     event.preventDefault();
     this.setState({ uploadStatus: "publishing" });
     const formData = new FormData();
+
     formData.append("post[title]", this.state.post.title);
     formData.append("post[caption]", this.state.post.caption);
-
-    if (this.state.uploadStatus === "editing") {
-      // ajax request for updating all selected posts (attached photos are not editable)
-      this.props.posts.forEach( postId => {
-        $.ajax({
-          // method: "PATCH",
-          url: `/api/posts/${postId}`,
-          data: formData,
-          contentType: false,
-          processData: false
-        });
-      })
-    } else {
-      // ajax request for creating a post
-      if (this.state.imageFile) {
-        formData.append("post[photo]", this.state.post.imageFile);
-      }
-      $.ajax({
-        method: "POST",
-        url: "/api/posts",
-        data: formData,
-        contentType: false,
-        processData: false
-      }).then(
-        () => this.props.closeModal()
-      );
+    if (this.state.imageFile) {
+      formData.append("post[photo]", this.state.post.imageFile);
     }
+
+    $.ajax({
+      method: "POST",
+      url: "/api/posts",
+      data: formData,
+      contentType: false,
+      processData: false
+    }).then(
+      () => this.props.closeModal()
+    );
   }
 
   updateInput(field) {
@@ -97,14 +85,8 @@ class PostForm extends React.Component {
           <h1>Publishing...</h1>
         </div>
       );
-
-    } else if (uploadStatus === "editing") {
-      return (
-        <PostFormEditPane posts={this.props.posts} updateInput={this.updateInput} handleSubmit={this.handleSubmit}/>
-      );
     }
-
   }
 }
 
-export default PostForm;
+export default CreatePostForm;

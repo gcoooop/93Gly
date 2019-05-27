@@ -13,7 +13,7 @@ class PostIndex extends React.Component {
 
   toggleSelected(postId) {
     return (event) => {
-      this.props.toggleSelected(postId);
+      this.props.toggleSelectedExisting(postId);
     };
   }
 
@@ -23,7 +23,7 @@ class PostIndex extends React.Component {
         key={post.id} 
         post={post} 
         toggleSelected={this.toggleSelected(post.id)} 
-        selected={ this.props.selectedPosts.includes(post.id) ? "selected" : "" }
+        selected={ this.props.selectedNewPosts.includes(post.id) ? "selected" : "" }
       />);
     return (
       <section className="posts-grid">
