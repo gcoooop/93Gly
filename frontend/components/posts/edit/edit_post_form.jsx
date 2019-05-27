@@ -7,12 +7,19 @@ class EditPostForm extends React.Component {
     this.state = { id: null, title: "", caption: ""};
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.updateInput = this.updateInput.bind(this);
   }
   
   handleSubmit(event) {
     event.preventDefault();
     this.props.processForm(this.state);
+  }
+
+  handleDelete(event) {
+    event.preventDefault();
+    this.props.deletePost(this.state.id);
+    this.setState({ id: null, title: "", caption: "" });
   }
 
   updateInput(field) {
@@ -53,6 +60,7 @@ class EditPostForm extends React.Component {
             <label>Caption</label>
             <input type="text" value={this.state.caption} onChange={this.updateInput("caption")}/>
             <button onClick={this.handleSubmit}>Submit</button>
+            <button onClick={this.handleDelete} disabled={!this.state.id}>Delete Post</button>
           </form>
         </div>
       </div>

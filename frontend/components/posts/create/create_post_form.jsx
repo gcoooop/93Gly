@@ -32,11 +32,11 @@ class CreatePostForm extends React.Component {
       if (post.photoFile) {
         formData.append("post[photo]", post.photoFile);
       }
-      if (idx < this.props.uploadedPosts.length - 1)
+      if (idx < Object.keys(this.props.uploadedPosts).length - 1)
         this.props.processForm(formData);
-        else {
-          this.props.processForm(formData)
-            .then(() => this.props.closeModal());
+      else {
+        this.props.processForm(formData)
+          .then(() => this.props.closeModal());
       }
     });
   }

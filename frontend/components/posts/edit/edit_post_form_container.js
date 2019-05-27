@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import EditPostForm from "./edit_post_form";
-import { updatePost } from "../../../actions/post_actions";
+import { updatePost, deletePost } from "../../../actions/post_actions";
 
 const mstp = state => {
   return {
@@ -10,6 +10,7 @@ const mstp = state => {
 
 const mdtp = dispatch => {
   return {
+    deletePost: id => dispatch(deletePost(id)),
     processForm: post => dispatch(updatePost(post))
   };
 };
