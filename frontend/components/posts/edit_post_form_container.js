@@ -3,7 +3,7 @@ import EditPostForm from "./edit_post_form";
 import { updatePost } from "../../actions/post_actions";
 
 const mstp = state => {
-  const selectedPostIds = state.ui.selectedPosts.selectedExistingPosts;
+  const selectedPostIds = state.entities.selectedPosts.selectedExistingPosts;
   const selectedPosts = {};
   selectedPostIds.forEach( id => selectedPosts[id] = state.entities.posts[id] );
   return {

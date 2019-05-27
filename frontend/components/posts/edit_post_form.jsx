@@ -11,7 +11,6 @@ class PostForm extends React.Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    this.setState({ uploadStatus: "publishing" });
     const formData = new FormData();
     formData.append("post[title]", this.state.post.title);
     formData.append("post[caption]", this.state.post.caption);
@@ -27,9 +26,9 @@ class PostForm extends React.Component {
     });
   }
 
-  updateInput(field) {
+  updateInput(postId, field) {
     return event => {
-      this.setState({ ["post"[field]]: event.target.value });
+      this.setState({ ["posts"[field]]: event.target.value });
     };
   }
 
@@ -37,7 +36,7 @@ class PostForm extends React.Component {
     debugger
     const { posts } = this.state;
     return (
-      <PostFormEditPane posts={this.props.post} updateInput={this.updateInput} handleSubmit={this.handleSubmit}/>
+      <PostFormEditPane posts={this.props.posts} updateInput={this.updateInput} handleSubmit={this.handleSubmit}/>
     );
   }
 }

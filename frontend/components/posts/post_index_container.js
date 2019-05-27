@@ -6,7 +6,7 @@ import { toggleSelectedExisting } from "../../actions/select_posts_actions";
 const mstp = state => {
   return {
     posts: Object.values(state.entities.posts),
-    selectedNewPosts: state.ui.selectedPosts.selectedNewPosts
+    selectedNewPosts: state.entities.selectedPosts.selectedNewPosts
   };
 };
 
