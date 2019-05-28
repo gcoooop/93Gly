@@ -47,7 +47,6 @@ class EditPostForm extends React.Component {
         updateSelection={this.updateSelection(post)}
       /> 
     );
-    debugger
     return (
       <div className="post-editor">
         <aside></aside>

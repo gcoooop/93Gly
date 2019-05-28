@@ -2,8 +2,8 @@ import React from "react";
 import PostEditFormContainer from "../posts/edit/edit_post_form_container";
 
 class Manage extends React.Component {
-  constructor(props) {
-    super(props);
+  componentWillUnmount() {
+    this.props.clearErrors();
   }
 
   componentDidMount() {

@@ -42,6 +42,10 @@ class Api::PostsController < ApplicationController
   end
 
   def destroy
+    if params[:id] == "null"
+      return render json: ["No post selected!"], status: 422
+    end
+
     @post = Post.find(params[:id])
 
     if @post.photographer_id != current_user.id 
