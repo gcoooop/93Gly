@@ -6,7 +6,7 @@ class CreatePostForm extends React.Component {
     super(props);
     this.state = { 
       selectedPost: { idx: "", title: "", caption: "", photoUrl: "", photoFile: "" }, 
-      uploadedPostsCount: 0,
+      uploadedPostsCount: 1,
       uploadStatus: "waiting" 
     };
 
@@ -127,7 +127,7 @@ class CreatePostForm extends React.Component {
         <CreatePostItem 
           key={post.idx}
           post={post} 
-          // selected={ post === this.state.selectedPost ? "selected" : ""} 
+          selected={ post.idx === this.state.selectedPost.idx ? "selected" : ""} 
           removeUpload={this.removeUpload(post.idx)}
           updateSelection={this.updateSelection(post)}
         /> 
