@@ -16,13 +16,6 @@ const PostsReducer = (state = {}, action) => {
       delete newState[action.postId];
       return newState;
 
-    // case UPDATE_POST_ENTITY:
-    //   const updatedPost = state[action.post.id];
-    //   updatedPost.title = action.post.title;
-    //   updatedPost.caption = action.post.caption;
-    //   const updatedEntity = { [updatedPost.id]: updatedPost };
-    //   return Object.assign({}, state, updatedEntity);
-
     default:
       return state;
   }

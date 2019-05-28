@@ -47,6 +47,7 @@ class EditPostForm extends React.Component {
         updateSelection={this.updateSelection(post)}
       /> 
     );
+    debugger
     return (
       <div className="post-editor">
         <aside></aside>
@@ -60,7 +61,7 @@ class EditPostForm extends React.Component {
             <label>Caption</label>
             <input type="text" value={this.state.caption} onChange={this.updateInput("caption")}/>
             <button onClick={this.handleSubmit}>Submit</button>
-            <button onClick={this.handleDelete} disabled={!this.state.id}>Delete Post</button>
+            <button onClick={this.handleDelete}>Delete Post</button>
           </form>
         </div>
       </div>

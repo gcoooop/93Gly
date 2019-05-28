@@ -1,7 +1,11 @@
 class Api::PostsController < ApplicationController
 
   def index
-    @posts = Post.all
+    if params[:userId]
+      @posts = Post.where(photographer_id: params[:userId])
+    else
+      @posts = Post.all
+    end
   end
 
   def show 
@@ -25,6 +29,11 @@ class Api::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    
+    if @post.photographer_id != current_user.id 
+      return render json: ["You can only edit your own posts!"], status: 401
+    end
+
     if @post.update(post_params)
       render :show
     else
@@ -34,7 +43,12 @@ class Api::PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post
+
+    if @post.photographer_id != current_user.id 
+      return render json: ["You can only delete your own posts!"], status: 401
+    end
+    
+    if @post 
       @post.destroy
       render :show
     else

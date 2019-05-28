@@ -56,6 +56,13 @@ export const fetchPosts = () => {
   };
 };
 
+export const fetchUserPosts = userId => {
+  return dispatch => {
+    return PostApiUtil.fetchUserPosts(userId)
+      .then( posts => dispatch(receivePosts(posts)) );
+  };
+};
+
 export const fetchPost = id => {
   return dispatch => {
     return PostApiUtil.fetchPost(id)
