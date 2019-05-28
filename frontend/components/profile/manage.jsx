@@ -14,8 +14,17 @@ class Manage extends React.Component {
     return (
       <div className="manage-pane">
         <div className="manage-pane-left">
-          <button onClick={() => this.props.openModal("CreatePostFormContainer")}>Upload to Profile</button>
-          <aside></aside>
+          <div className="top">
+            <button onClick={() => this.props.openModal("CreatePostFormContainer")}>Upload to Profile</button>
+          </div>
+          <aside className="sources">
+            <h3>PHOTOS</h3>
+            <ul className="library-sources">
+              <li>All Photos<span>{this.props.postCount}</span></li>
+              <li>Public<span>{this.props.postCount}</span></li>
+              <li>Licensing<span>0</span></li>
+            </ul>
+          </aside>
         </div>
         <PostEditFormContainer /> 
       </div>

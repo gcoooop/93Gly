@@ -1,27 +1,56 @@
 .manage-pane {
   display: flex;
+  height: 100vh;
 }
 
 .manage-pane-left {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  border: 1px solid blue;
-  width: 260px;
-  button {
+  border: 1px solid rgb(238, 239, 242);
+  min-width: 259px;
+  
+  .top {
     display: flex;
     justify-content: center;
-    height: 40px;
-    font-size: 14px;
-    box-sizing: padding-box;
-    margin: 10px 20px;
-    padding: 0 10px;
-    background: #0099e5;
-    color: white;
-    border: 1px solid rgb(0, 153, 229);
-    border-radius: 3px;
-    &:hover {
-      cursor: pointer;
+    height: 60px;
+    width: 259px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgb(238, 239, 242);
+    button {
+      display: flex;
+      justify-content: center;
+      height: 40px;
+      width: 100%;
+      font-size: 14px;
+      box-sizing: border-box;
+      margin: 10px 20px;
+      padding: 0 10px;
+      background: #0099e5;
+      color: white;
+      border: 1px solid rgb(0, 153, 229);
+      border-radius: 3px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+  .sources {
+    padding: 20px;
+    padding-right: 0;
+    h3 {
+      color: #0099e5;
+      margin-bottom: 10px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      list-style: none;
+      font-size: 14px;
+      color: rgb(82, 85, 88);
+      line-height: 28px;
     }
   }
 }
@@ -37,14 +66,16 @@
   border: 1px solid red;
   .posts-grid {
     width: calc(100vw - 600px);
+    min-width: 400px;
     display: flex;
+    flex-wrap: wrap;
   }
 }
 
 .manage-pane-right {
   box-sizing: border-box;
   border: 1px solid green;
-  width: 340px;
+  width: 335px;
   form {
     display: flex;
     flex-direction: column;

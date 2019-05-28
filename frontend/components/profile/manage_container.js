@@ -6,6 +6,7 @@ import Manage from "./manage";
 
 const mstp = state => {
   return {
+    postCount: Object.keys(state.entities.posts).length,
     currentUserId: state.session.currentUserId
   };
 };
