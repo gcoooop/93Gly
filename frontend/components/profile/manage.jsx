@@ -12,8 +12,11 @@ class Manage extends React.Component {
 
   render() {
     return (
-      <div>
-        <div onClick={() => this.props.openModal("CreatePostFormContainer")}>Upload to Profile</div>
+      <div className="manage-pane">
+        <div className="manage-pane-left">
+          <div onClick={() => this.props.openModal("CreatePostFormContainer")}>Upload to Profile</div>
+          <aside></aside>
+        </div>
         <PostEditFormContainer /> 
       </div>
     );

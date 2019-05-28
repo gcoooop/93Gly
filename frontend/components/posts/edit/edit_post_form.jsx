@@ -49,11 +49,13 @@ class EditPostForm extends React.Component {
     );
     return (
       <div className="post-editor">
-        <aside></aside>
-        <div className="post-items-wrapper">
-          {editPostItems}
+        <div className="manage-pane-middle">
+          <h2>Public <span>{editPostItems.length} Photos</span></h2>
+          <div className="post-items-wrapper">
+            {editPostItems}
+          </div>
         </div>
-        <div className="form-wrapper">
+        <div className="form-wrapper manage-pane-right">
           <form className="post-form">
             <label>Title</label>
             <input type="text" value={this.state.title} onChange={this.updateInput("title")}/>
