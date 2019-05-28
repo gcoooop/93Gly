@@ -9,7 +9,9 @@ const UploadedPostReducer = (state = {}, action) => {
       return Object.assign({}, state, uploadedPost);
 
     case DELETE_UPLOADED_POST_ENTITY:
-    
+      const newState = Object.assign({}, state);
+      delete newState[action.postIdx];
+      return newState;
     
     case CLEAR_UPLOADED_POST_ENTITIES:
       return {};

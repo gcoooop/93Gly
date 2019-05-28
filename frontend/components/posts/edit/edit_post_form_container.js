@@ -10,7 +10,7 @@ const mstp = state => {
 
 const mdtp = dispatch => {
   return {
-    deletePost: id => dispatch(deletePost(id)),
+    deletePost: idx => dispatch(deletePost(idx)),
     processForm: post => dispatch(updatePost(post))
   };
 };

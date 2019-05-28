@@ -14,11 +14,24 @@ class CreatePostForm extends React.Component {
     this.updateInput = this.updateInput.bind(this);
     this.updateFileInput = this.updateFileInput.bind(this);
     this.closeWindow = this.closeWindow.bind(this);
+    this.removeUpload = this.removeUpload.bind(this);
+  }
+
+  componentDidUpdate() {
+    if (Object.keys(this.props.uploadedPosts).length === 0 && this.state.uploadStatus !== "waiting") {
+      this.setState({ uploadStatus: "waiting"});
+    }
   }
 
   closeWindow(event) {
     this.props.clearUploadedPostEntities();
     this.props.closeModal();
+  }
+
+  removeUpload(postIdx) {
+    return event => {
+      this.props.deleteUploadedPostEntity(postIdx);
+    };
   }
 
   handleSubmit(event) {
@@ -114,7 +127,8 @@ class CreatePostForm extends React.Component {
         <CreatePostItem 
           key={post.idx}
           post={post} 
-          selected={ post === this.state.selectedPost ? "selected" : ""} 
+          // selected={ post === this.state.selectedPost ? "selected" : ""} 
+          removeUpload={this.removeUpload(post.idx)}
           updateSelection={this.updateSelection(post)}
         /> 
       );

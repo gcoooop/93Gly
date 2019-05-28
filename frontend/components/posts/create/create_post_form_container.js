@@ -12,7 +12,7 @@ const mstp = state => {
 const mdtp = dispatch => {
   return {
     createUploadedPostEntity: post => dispatch(createUploadedPostEntity(post)),
-    deleteUploadedPostEntity: id => dispatch(deleteUploadedPostEntity(id)),
+    deleteUploadedPostEntity: idx => dispatch(deleteUploadedPostEntity(idx)),
     clearUploadedPostEntities: () => dispatch(clearUploadedPostEntities()),
     processForm: post => dispatch(createPost(post)),
     closeModal: () => dispatch(closeModal())

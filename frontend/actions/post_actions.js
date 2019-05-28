@@ -36,10 +36,10 @@ export const createUploadedPostEntity = post => {
 };
 
 
-export const deleteUploadedPostEntity = id => {
+export const deleteUploadedPostEntity = postIdx => {
   return {
     type: DELETE_UPLOADED_POST_ENTITY,
-    post
+    postIdx
   };
 };
 
