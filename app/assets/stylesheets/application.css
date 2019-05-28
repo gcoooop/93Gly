@@ -18,8 +18,9 @@
  *= splash.scss
  *= modal.scss
  *= session_form.scss
- *= post_form.scss
- *= post_index_item.scss
+ *= manage_pane.scss
+ *= edit_post_form.scss
+ *= posts_grid.scss
  */
  
  html, body {

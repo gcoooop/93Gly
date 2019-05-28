@@ -1,0 +1,53 @@
+.manage-pane {
+  display: flex;
+}
+
+.manage-pane-left {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  border: 1px solid blue;
+  width: 260px;
+  button {
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    font-size: 14px;
+    box-sizing: padding-box;
+    margin: 10px 20px;
+    padding: 0 10px;
+    background: #0099e5;
+    color: white;
+    border: 1px solid rgb(0, 153, 229);
+    border-radius: 3px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.post-editor {
+  display: flex;
+  box-sizing: border-box;
+  border: 1px solid rgb(0, 0, 0);
+}
+
+.manage-pane-middle {
+  box-sizing: border-box;
+  border: 1px solid red;
+  .posts-grid {
+    width: calc(100vw - 600px);
+    display: flex;
+  }
+}
+
+.manage-pane-right {
+  box-sizing: border-box;
+  border: 1px solid green;
+  width: 340px;
+  form {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+}

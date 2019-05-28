@@ -51,7 +51,7 @@ class EditPostForm extends React.Component {
       <div className="post-editor">
         <div className="manage-pane-middle">
           <h2>Public <span>{editPostItems.length} Photos</span></h2>
-          <div className="post-items-wrapper">
+          <div className="posts-grid">
             {editPostItems}
           </div>
         </div>
