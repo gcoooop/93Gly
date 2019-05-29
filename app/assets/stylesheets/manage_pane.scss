@@ -100,10 +100,24 @@
       background-position: center;
       background-size: cover;
       border: 3px solid transparent;
+      position: relative;
     }
     .selected {
       border: 3px solid rgb(0, 153, 229);
       border-radius: 3px;
+      .selected-icon {
+        position: absolute;
+        bottom: -7px;
+        right: -7px;
+        height: 20px;
+        width: 20px;
+        background-image: image-url("white_checkmark.svg");
+        background-size: 8px;
+        background-color: #0099e5;
+        background-position: center;
+        background-repeat: no-repeat;
+        border-radius: 50%;
+      }
     }
   }
 }

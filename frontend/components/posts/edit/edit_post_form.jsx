@@ -9,7 +9,7 @@ class EditPostForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.updateInput = this.updateInput.bind(this);
-    this.updateSelection = this.updateSelection.bind(this);
+    this.makeSelection = this.makeSelection.bind(this);
     this.clearSelection = this.clearSelection.bind(this);
   }
   
@@ -37,11 +37,9 @@ class EditPostForm extends React.Component {
     }
   }
 
-  updateSelection(post) {
+  makeSelection(post) {
     return event => {
-      if (this.state.id === post.id) {
-        this.setState({ id: null, title: "", caption: "" });
-      } else {
+      if (this.state.id !== post.id) {
         this.setState( post );
       }
     };
@@ -53,7 +51,7 @@ class EditPostForm extends React.Component {
         key={post.id}
         post={post} 
         selected={ post.id === this.state.id ? "selected" : ""} 
-        updateSelection={this.updateSelection(post)}
+        makeSelection={this.makeSelection(post)}
       /> 
     );
 

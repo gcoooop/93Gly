@@ -13,19 +13,15 @@ class CreatePostForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInput = this.updateInput.bind(this);
     this.updateFileInput = this.updateFileInput.bind(this);
-    this.closeWindow = this.closeWindow.bind(this);
     this.removeUpload = this.removeUpload.bind(this);
+    this.makeSelection = this.makeSelection.bind(this);
+    this.clearSelection = this.clearSelection.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (Object.keys(prevProps.uploadedPosts).length === 1 && Object.keys(this.props.uploadedPosts).length === 0) {
       this.setState({ uploadStatus: "waiting"});
     }
-  }
-
-  closeWindow(event) {
-    this.props.clearUploadedPostEntities();
-    this.props.closeModal();
   }
 
   removeUpload(postIdx) {
@@ -65,7 +61,7 @@ class CreatePostForm extends React.Component {
 
   updateFileInput(files) {
     this.setState({ uploadStatus: "processing" });
-    files.forEach( file => {
+    files.forEach( (file, n) => {
       const reader = new FileReader();
       reader.onloadend = () => {
         this.props.createUploadedPostEntity({ 
@@ -86,23 +82,26 @@ class CreatePostForm extends React.Component {
       } else {
         console.log("ERROR CREATE_POST_FORM IN UPDATEFILEINPUT");
       }
+      if (n === files.length - 1) {
+        this.setState({ uploadStatus: "loaded" });
+      }
     });
-    this.setState({ uploadStatus: "loaded" })
   }
 
-  updateSelection(post) {
+  clearSelection(event) {
+    if (event.target.className === "post-uploader-list") {
+      const defaultState = { idx: "", title: "", caption: "", photoUrl: "", photoFile: "" };
+      this.setState({ selectedPost: defaultState });
+    }
+  }
+
+  makeSelection(post) {
     return event => {
-      if (this.state.selectedPost.idx) {
-        if (this.state.selectedPost.idx === post.idx) {
-          const defaultState = { idx: "", title: "", caption: "", photoUrl: "", photoFile: "" };
-          this.setState({ selectedPost: defaultState });
-        } else {
-          this.setState({ selectedPost: post });
-        }
-      } else {
+      // debugger
+      if (this.state.selectedPost.idx !== post.idx) {
         this.setState({ selectedPost: post });
       }
-    }
+    };
   }
 
   render() {
@@ -148,17 +147,19 @@ class CreatePostForm extends React.Component {
 
     } else if (uploadStatus === "loaded") {
       const createPostItems = Object.values(this.props.uploadedPosts).map( post => 
-        <CreatePostItem 
-          key={post.idx}
-          post={post} 
-          selected={ post.idx === this.state.selectedPost.idx ? "selected" : ""} 
-          removeUpload={this.removeUpload(post.idx)}
-          updateSelection={this.updateSelection(post)}
-        /> 
+        <li key={post.idx}>
+          <CreatePostItem 
+            post={post} 
+            selected={ post.idx === this.state.selectedPost.idx ? "selected" : ""} 
+            removeUpload={this.removeUpload(post.idx)}
+            makeSelection={this.makeSelection(post).bind(this)}
+          /> 
+          <input type="text" value={post.title} onChange={this.updateInput("title")}/>
+        </li>
       );
       return (
         <div className="post-uploader loaded">
-          <ul className="post-uploader-list">
+          <ul className="post-uploader-list" onClick={this.clearSelection}>
             {createPostItems}
             <li className="post-uploader-list-item dropzone-item">{dropzoneEle}</li>
           </ul>
@@ -171,7 +172,6 @@ class CreatePostForm extends React.Component {
               <button onClick={this.handleSubmit}>Submit</button>
             </form>
           </div>
-          <div onClick={this.closeWindow} className="close-x">&times;</div>
         </div>
       );
 
