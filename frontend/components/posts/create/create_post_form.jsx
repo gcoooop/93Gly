@@ -18,9 +18,9 @@ class CreatePostForm extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // if (Object.keys(this.props.uploadedPosts).length === 0) {
-    //   this.setState({ uploadStatus: "waiting"});
-    // }
+    if (Object.keys(prevProps.uploadedPosts).length === 1 && Object.keys(this.props.uploadedPosts).length === 0) {
+      this.setState({ uploadStatus: "waiting"});
+    }
   }
 
   closeWindow(event) {
