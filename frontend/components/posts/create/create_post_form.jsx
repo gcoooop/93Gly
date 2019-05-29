@@ -107,28 +107,42 @@ class CreatePostForm extends React.Component {
 
   render() {
     const { uploadStatus } = this.state;
+    const promptText = this.state.uploadStatus === "waiting" ? (
+      <div className="prompt-text">
+        <a>Select Photos</a>
+        <p>Or drag &amp; drop photos anywhere on this page</p>
+      </div>
+    ) : (
+      <div className="prompt-text">
+        <img/>
+        <p>Add more photos</p>
+      </div>
+    )
+    const dropzoneEle = (
+      <Dropzone onDrop={this.updateFileInput}>
+        {({getRootProps, getInputProps}) => (
+          <section className="container">
+            <div {...getRootProps({className: 'dropzone'})}>
+              <input {...getInputProps()} />
+              {promptText}
+            </div>
+          </section>
+        )}
+      </Dropzone>
+    );
+
 
     if (uploadStatus === "waiting") {
       return (
         <div className="post-uploader waiting">
-          <Dropzone onDrop={this.updateFileInput}>
-            {({getRootProps, getInputProps}) => (
-              <section className="container">
-                <div {...getRootProps({className: 'dropzone'})}>
-                  <input {...getInputProps()} />
-                  <a>Select Photos</a>
-                  <p>Or drag &amp; drop photos anywhere on this page</p>
-                </div>
-              </section>
-            )}
-          </Dropzone>
+          {dropzoneEle}
         </div>
       );
 
     } else if (uploadStatus === "processing") {
       return (
-        <div className="post-uploader">
-          Processing...
+        <div className="post-uploader processing">
+          Uploading...
         </div>
       );
 
@@ -143,9 +157,11 @@ class CreatePostForm extends React.Component {
         /> 
       );
       return (
-        <div className="post-uploader">
-          {createPostItems}
-          <input type="file" onChange={this.updateFileInput} />
+        <div className="post-uploader loaded">
+          <ul className="post-uploader-list">
+            {createPostItems}
+            <li className="post-uploader-list-item dropzone-item">{dropzoneEle}</li>
+          </ul>
           <div className="form-wrapper">
             <form className="post-form">
               <label>Title</label>
