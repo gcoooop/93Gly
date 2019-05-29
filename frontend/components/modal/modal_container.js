@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import Modal from "./modal";
 import { closeModal } from "../../actions/modal_actions";
+import  { clearUploadedPostEntities } from "../../actions/post_actions";
 
 const mstp = state => {
   return {
@@ -10,7 +11,8 @@ const mstp = state => {
 
 const mdtp = dispatch => {
   return {
-    closeModal: () => dispatch(closeModal())
+    closeModal: () => dispatch(closeModal()),
+    clearUploadedPostEntities: () => dispatch(clearUploadedPostEntities())
   };
 };
 
