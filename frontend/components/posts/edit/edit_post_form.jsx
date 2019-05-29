@@ -58,7 +58,9 @@ class EditPostForm extends React.Component {
             {editPostItems}
           </div>
         </div>
+
         <div className="form-wrapper manage-pane-right">
+          <h2>Editing A Photo</h2>
           <form className="post-form">
             <label>Title</label>
             <input type="text" value={this.state.title} onChange={this.updateInput("title")} disabled={!this.state.id}/>

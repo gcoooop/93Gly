@@ -51,6 +51,10 @@
       font-size: 14px;
       color: rgb(82, 85, 88);
       line-height: 28px;
+      span {
+        color: #b9c1c7;
+        padding-right: 20px;
+      }
     }
   }
 }
@@ -58,16 +62,19 @@
 .post-editor {
   display: flex;
   box-sizing: border-box;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1px solid rgb(238, 239, 242);
+  border-left: 0;
 }
 
 .manage-pane-middle {
   box-sizing: border-box;
+  background: #f7f8fa;
   .top-bar {
     padding: 20px;
     border-bottom: 1px solid rgb(238, 239, 242);
-    line-height: 20px;
+    line-height: 19px;
     box-sizing: border-box;
+    background: white;
     h2 {
       color: #0099e5;
       font-size: 14px;
@@ -82,11 +89,20 @@
     flex-wrap: wrap;
     width: calc(100vw - 600px);
     min-width: 400px;
+    background: #f7f8fa;
     .post-grid-item-editor {
+      box-sizing: border-box;
       width: 30%;
       height: 200px;
+      margin-top: 20px;
+      margin-left: 20px;
       background-position: center;
       background-size: cover;
+      border: 3px solid transparent;
+    }
+    .selected {
+      border: 3px solid rgb(0, 153, 229);
+      border-radius: 3px;
     }
   }
 }
@@ -96,9 +112,33 @@
   box-sizing: border-box;
   border: 1px solid green;
   width: 335px;
+  border: 1px solid rgb(238, 239, 242);
+  h2 {
+    padding: 20px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    line-height: 18.5px;
+    font-size: 18px;
+    border-bottom: 1px solid rgb(238, 239, 242);
+  }
   form {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+    padding: 0 20px;
+    img {
+      width: 20%;
+      height: auto;
+    }
+    button {
+      box-sizing: border-box;
+      margin: 10px;
+      padding: 0 10px;
+      border: 1px solid #34bf49;
+      &:hover {
+        cursor: pointer;
+        background: #41cb56;
+      }
+    }
   }
 }
