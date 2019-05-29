@@ -11,7 +11,8 @@ const PostIndexItem = props => {
     backgroundImage: `url(${props.post.photoUrl})`,
     flexGrow: 1,
     flexShrink: 0,
-    flexBasis: `${calcW}px`
+    flexBasis: `${calcW}px`,
+    // maxWidth: `${calcW}px`
   };
   return (
     <div className="post-grid-item" style={ styles }>
