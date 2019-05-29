@@ -121,13 +121,17 @@
     font-size: 18px;
     border-bottom: 1px solid rgb(238, 239, 242);
   }
-  form {
+  fieldset {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     padding: 0 20px;
     label {
+      color: #0099e5;
       margin-bottom: 10px;
+    }
+    &:disabled label {
+      color: #b3e1f7;
     }
     textarea {
       width: 93%;
@@ -150,11 +154,10 @@
       }
     }
     button {
+      display: flex;
+      justify-content: center;
       box-sizing: border-box;
       color: white;
-      &:disabled {
-        cursor: default;
-      }
     }
 
     .delete-button {
@@ -163,10 +166,15 @@
       background: rgb(113, 118, 122);
       border-radius: 3px;
       line-height: 28px;
-      margin-bottom: 45px;
+      margin-bottom: 20px;
       &:hover {
         cursor: pointer;
         background: #7d8387;
+      }
+      &:disabled {
+        cursor: default;
+        color: white;
+        background: #f2f3f3;
       }
     }
 
@@ -174,6 +182,7 @@
       display: flex;
       justify-content: space-around;
       border-top: 1px solid rgb(238, 239, 242);
+      padding-top: 20px;
     }
 
     .save-button {
@@ -183,16 +192,27 @@
       height: 40px;
       padding: 5px 30px;
       margin-left: 20px;
+      width: 60%;
       &:hover {
         cursor: pointer;
         background: #41cb56;
+      }
+      &:disabled {
+        cursor: default;
+        border-color: #e1f5e4;
+        background: #e1f5e4;
       }
     }
     .cancel-button {
       color: #71767a;
       background: white;
       &:hover {
-        color:  #ff4c4c;;
+        cursor: pointer;
+        color:  #ff4c4c;
+      }
+      &:disabled {
+        cursor: default;
+        color: #d8dadb;
       }
     }
   }

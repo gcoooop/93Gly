@@ -56,6 +56,14 @@ class EditPostForm extends React.Component {
         updateSelection={this.updateSelection(post)}
       /> 
     );
+
+    let editHeader;
+    if (this.state.id) {
+      editHeader = <h2>Editing A Photo</h2>
+    } else {
+      editHeader = <h2 style={{color:"#c5c5c5"}}>Edit</h2>
+    }
+
     return (
       <div className="post-editor" onClick={this.clearSelection}>
         <div className="manage-pane-middle">
@@ -68,17 +76,19 @@ class EditPostForm extends React.Component {
         </div>
 
         <div className="form-wrapper manage-pane-right">
-          <h2>Editing A Photo</h2>
+          {editHeader}
           <form className="post-form">
-            <label>Title</label>
-            <textarea type="text" value={this.state.title} onChange={this.updateInput("title")} disabled={!this.state.id}/>
-            <label>Caption</label>
-            <textarea type="text" value={this.state.caption} onChange={this.updateInput("caption")} disabled={!this.state.id}/>
-            <button className="delete-button" onClick={this.handleDelete} disabled={!this.state.id}>Delete Post</button>
-            <div className="form-controls">
-              <button className="cancel-button" onClick={this.clearSelection} disabled={!this.state.id}>Cancel</button>
-              <button className="save-button" onClick={this.handleSubmit} disabled={!this.state.id}>Save</button>
-            </div>
+            <fieldset disabled={!this.state.id}>
+              <label>Title</label>
+              <textarea type="text" value={this.state.title} onChange={this.updateInput("title")}/>
+              <label>Caption</label>
+              <textarea type="text" value={this.state.caption} onChange={this.updateInput("caption")}/>
+              <button className="delete-button" onClick={this.handleDelete}>Delete Post</button>
+              <div className="form-controls">
+                <button className="cancel-button" onClick={this.clearSelection}>Cancel</button>
+                <button className="save-button" onClick={this.handleSubmit}>Save</button>
+              </div>
+            </fieldset>
           </form>
         </div>
       </div>
