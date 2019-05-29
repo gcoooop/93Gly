@@ -1,0 +1,13 @@
+.post-grid-item-create {
+  box-sizing: border-box;
+  width: 30%;
+  height: 200px;
+  margin: 10px;
+  background-position: center;
+  background-size: cover;
+  border: 3px solid transparent;
+}
+.selected {
+  border: 3px solid rgb(0, 153, 229);
+  border-radius: 3px;
+}

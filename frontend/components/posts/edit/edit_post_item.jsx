@@ -1,17 +1,8 @@
 import React from "react";
 
 const EditPostItem = (props) => {
-  // const img = new Image();
-  // img.src = props.post.photoUrl;
-  // const imgW = img.width; 
-  // const imgH = img.height; 
-  // const calcW = 200 * imgW / imgH;
   const styles = {
-    backgroundImage: `url(${props.post.photoUrl})`,
-  //   flexGrow: 1,
-  //   flexShrink: 0,
-  //   flexBasis: `${calcW}px`,
-    // maxHeight: `calc`
+    backgroundImage: `url(${props.post.photoUrl})`
   };
   return (
     <div className={`post-grid-item-editor ${props.selected}`} onClick={props.updateSelection} style={ styles }>

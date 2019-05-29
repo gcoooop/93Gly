@@ -1,4 +1,5 @@
 import React from "react";
+import Dropzone from "react-dropzone";
 import CreatePostItem from "./create_post_item";
 
 class CreatePostForm extends React.Component {
@@ -9,7 +10,6 @@ class CreatePostForm extends React.Component {
       uploadedPostsCount: 1,
       uploadStatus: "waiting" 
     };
-
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateInput = this.updateInput.bind(this);
     this.updateFileInput = this.updateFileInput.bind(this);
@@ -17,10 +17,10 @@ class CreatePostForm extends React.Component {
     this.removeUpload = this.removeUpload.bind(this);
   }
 
-  componentDidUpdate() {
-    if (Object.keys(this.props.uploadedPosts).length === 0 && this.state.uploadStatus !== "waiting") {
-      this.setState({ uploadStatus: "waiting"});
-    }
+  componentDidUpdate(prevProps, prevState) {
+    // if (Object.keys(this.props.uploadedPosts).length === 0) {
+    //   this.setState({ uploadStatus: "waiting"});
+    // }
   }
 
   closeWindow(event) {
@@ -63,31 +63,31 @@ class CreatePostForm extends React.Component {
     };
   }
 
-  updateFileInput(event) {
+  updateFileInput(files) {
     this.setState({ uploadStatus: "processing" });
-    const reader = new FileReader();
-    const file = event.target.files[0];
-    reader.onloadend = () => {
-      this.props.createUploadedPostEntity({ 
-        photoUrl: reader.result, 
-        photoFile: file, 
-        idx: this.state.uploadedPostsCount, 
-        title: "", 
-        caption: "" 
-      });
-      const { uploadedPosts } = this.props;
-      this.setState({ 
-        selectedPost: uploadedPosts[this.state.uploadedPostsCount], 
-        uploadedPostsCount: this.state.uploadedPostsCount + 1, 
-        uploadStatus: "loaded" 
-      });
-    };
-    
-    if (file) {
-      reader.readAsDataURL(file);
-    } else {
-      console.log("ERROR CREATE_POST_FORM IN UPDATEFILEINPUT");
-    }
+    files.forEach( file => {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        this.props.createUploadedPostEntity({ 
+          photoUrl: reader.result, 
+          photoFile: file, 
+          idx: this.state.uploadedPostsCount, 
+          title: "", 
+          caption: "" 
+        });
+        const { uploadedPosts } = this.props;
+        this.setState({ 
+          selectedPost: uploadedPosts[this.state.uploadedPostsCount], 
+          uploadedPostsCount: this.state.uploadedPostsCount + 1
+        });
+      }
+      if (file) {
+        reader.readAsDataURL(file);
+      } else {
+        console.log("ERROR CREATE_POST_FORM IN UPDATEFILEINPUT");
+      }
+    });
+    this.setState({ uploadStatus: "loaded" })
   }
 
   updateSelection(post) {
@@ -107,11 +107,22 @@ class CreatePostForm extends React.Component {
 
   render() {
     const { uploadStatus } = this.state;
+
     if (uploadStatus === "waiting") {
       return (
         <div className="post-uploader">
           <div onClick={this.closeWindow} className="close-x">&times;</div>
-          <input type="file" onChange={this.updateFileInput} />
+            {/* <input type="file" onChange={this.updateFileInput} /> */}
+          <Dropzone onDrop={this.updateFileInput}>
+            {({getRootProps, getInputProps}) => (
+              <section className="container">
+                <div {...getRootProps({className: 'dropzone'})}>
+                  <input {...getInputProps()} />
+                  <p>Or drag &amp; drop photos anywhere on this page</p>
+                </div>
+              </section>
+            )}
+          </Dropzone>
         </div>
       );
 
