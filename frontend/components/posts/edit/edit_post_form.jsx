@@ -10,6 +10,7 @@ class EditPostForm extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.updateInput = this.updateInput.bind(this);
     this.updateSelection = this.updateSelection.bind(this);
+    this.clearSelection = this.clearSelection.bind(this);
   }
   
   handleSubmit(event) {
@@ -27,6 +28,13 @@ class EditPostForm extends React.Component {
     return event => {
       this.setState({ [field]: event.target.value });
     };
+  }
+  
+  clearSelection(event) {
+    event.preventDefault();
+    if (event.target.className === "manage-pane-middle" || event.target.className === "posts-grid-editor" || event.target.className === "cancel-button") {
+      this.setState({ id: null, title: "", caption: "" });
+    }
   }
 
   updateSelection(post) {
@@ -49,7 +57,7 @@ class EditPostForm extends React.Component {
       /> 
     );
     return (
-      <div className="post-editor">
+      <div className="post-editor" onClick={this.clearSelection}>
         <div className="manage-pane-middle">
           <div className="top-bar">
             <h2>Public <span>{editPostItems.length} Photos</span></h2>
@@ -63,11 +71,14 @@ class EditPostForm extends React.Component {
           <h2>Editing A Photo</h2>
           <form className="post-form">
             <label>Title</label>
-            <input type="text" value={this.state.title} onChange={this.updateInput("title")} disabled={!this.state.id}/>
+            <textarea type="text" value={this.state.title} onChange={this.updateInput("title")} disabled={!this.state.id}/>
             <label>Caption</label>
-            <input type="text" value={this.state.caption} onChange={this.updateInput("caption")} disabled={!this.state.id}/>
+            <textarea type="text" value={this.state.caption} onChange={this.updateInput("caption")} disabled={!this.state.id}/>
             <button onClick={this.handleSubmit} disabled={!this.state.id}>Submit</button>
-            <button onClick={this.handleDelete} disabled={!this.state.id}>Delete Post</button>
+            <div className="form-controls">
+              <button className="cancel-button" onClick={this.clearSelection} disabled={!this.state.id}>Cancel</button>
+              <button onClick={this.handleDelete} disabled={!this.state.id}>Delete Post</button>
+            </div>
           </form>
         </div>
       </div>
