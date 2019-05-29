@@ -23,6 +23,7 @@
       height: 40px;
       width: 100%;
       font-size: 14px;
+      font-weight: 700;
       box-sizing: border-box;
       margin: 10px 20px;
       padding: 0 10px;
@@ -114,8 +115,8 @@
   width: 335px;
   border: 1px solid rgb(238, 239, 242);
   h2 {
-    padding: 20px;
-    margin-bottom: 20px;
+    padding: 20px 0;
+    padding-left: 20px;
     box-sizing: border-box;
     line-height: 18.5px;
     font-size: 18px;
@@ -124,8 +125,6 @@
   fieldset {
     display: flex;
     flex-direction: column;
-    box-sizing: border-box;
-    padding: 0 20px;
     label {
       color: #0099e5;
       margin-bottom: 10px;
@@ -133,16 +132,22 @@
     &:disabled label {
       color: #b3e1f7;
     }
+    .input-fields {
+      padding: 20px;
+      box-sizing: border-box;
+    }
     textarea {
-      width: 93%;
+      width: 100%;
       height: 115px;
       padding: 8px 10px;
       margin-bottom: 20px;
       box-sizing: border-box;
       resize: none;
       color: rgb(82, 85, 88);
+      font-size: 14px;
       border: 1px solid rgba(185, 193, 199, 0.5);
       border-radius: 3px;
+      line-height: 1.4em;
       &:focus {
         border-color: #0099e5;
         box-shadow: none;
@@ -161,12 +166,12 @@
     }
 
     .delete-button {
-      width: 93%;
+      width: 100%;
       padding: 0 30px;
       background: rgb(113, 118, 122);
       border-radius: 3px;
       line-height: 28px;
-      margin-bottom: 20px;
+      font-weight: 700;
       &:hover {
         cursor: pointer;
         background: #7d8387;
@@ -182,7 +187,7 @@
       display: flex;
       justify-content: space-around;
       border-top: 1px solid rgb(238, 239, 242);
-      padding-top: 20px;
+      padding: 20px;
     }
 
     .save-button {
@@ -194,6 +199,7 @@
       padding: 5px 30px;
       margin-left: 20px;
       width: 60%;
+      font-weight: 700;
       &:hover {
         cursor: pointer;
         background: #41cb56;

@@ -110,14 +110,13 @@ class CreatePostForm extends React.Component {
 
     if (uploadStatus === "waiting") {
       return (
-        <div className="post-uploader">
-          <div onClick={this.closeWindow} className="close-x">&times;</div>
-            {/* <input type="file" onChange={this.updateFileInput} /> */}
+        <div className="post-uploader waiting">
           <Dropzone onDrop={this.updateFileInput}>
             {({getRootProps, getInputProps}) => (
               <section className="container">
                 <div {...getRootProps({className: 'dropzone'})}>
                   <input {...getInputProps()} />
+                  <a>Select Photos</a>
                   <p>Or drag &amp; drop photos anywhere on this page</p>
                 </div>
               </section>
@@ -150,9 +149,9 @@ class CreatePostForm extends React.Component {
           <div className="form-wrapper">
             <form className="post-form">
               <label>Title</label>
-              <input type="text" value={this.state.selectedPost.title || ""} onChange={this.updateInput("title")}/>
+              <input type="text" value={this.state.selectedPost.title} onChange={this.updateInput("title")}/>
               <label>Caption</label>
-              <input type="text" value={this.state.selectedPost.caption || ""} onChange={this.updateInput("caption")}/>
+              <input type="text" value={this.state.selectedPost.caption} onChange={this.updateInput("caption")}/>
               <button onClick={this.handleSubmit}>Submit</button>
             </form>
           </div>

@@ -79,11 +79,13 @@ class EditPostForm extends React.Component {
           {editHeader}
           <form className="post-form">
             <fieldset disabled={!this.state.id}>
-              <label>Title</label>
-              <textarea type="text" value={this.state.title} onChange={this.updateInput("title")}/>
-              <label>Caption</label>
-              <textarea type="text" value={this.state.caption} onChange={this.updateInput("caption")}/>
-              <button className="delete-button" onClick={this.handleDelete}>Delete Post</button>
+              <div className="input-fields">
+                <label>Title</label>
+                <textarea type="text" value={this.state.title} onChange={this.updateInput("title")}/>
+                <label>Caption</label>
+                <textarea type="text" value={this.state.caption} onChange={this.updateInput("caption")}/>
+                <button className="delete-button" onClick={this.handleDelete}>Delete Post</button>
+              </div>
               <div className="form-controls">
                 <button className="cancel-button" onClick={this.clearSelection}>Cancel</button>
                 <button className="save-button" onClick={this.handleSubmit}>Save</button>
