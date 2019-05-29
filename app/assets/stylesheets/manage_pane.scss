@@ -63,14 +63,34 @@
 
 .manage-pane-middle {
   box-sizing: border-box;
-  border: 1px solid red;
-  .posts-grid {
-    width: calc(100vw - 600px);
-    min-width: 400px;
+  .top-bar {
+    padding: 20px;
+    border-bottom: 1px solid rgb(238, 239, 242);
+    line-height: 20px;
+    box-sizing: border-box;
+    h2 {
+      color: #0099e5;
+      font-size: 14px;
+      margin-right: 5px;
+      span {
+  
+      }
+    }
+  }
+  .posts-grid-editor {
     display: flex;
     flex-wrap: wrap;
+    width: calc(100vw - 600px);
+    min-width: 400px;
+    .post-grid-item-editor {
+      width: 30%;
+      height: 200px;
+      background-position: center;
+      background-size: cover;
+    }
   }
 }
+
 
 .manage-pane-right {
   box-sizing: border-box;

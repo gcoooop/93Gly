@@ -12,13 +12,10 @@ const PostIndexItem = props => {
     flexGrow: 1,
     flexShrink: 0,
     flexBasis: `${calcW}px`,
-    // maxWidth: `${calcW}px`
   };
   return (
     <div className="post-grid-item" style={ styles }>
-      <Link to={`/posts/${props.post.id}`}>
-        {/* <img src={props.post.photoUrl}/> */}
-      </Link>
+      <Link to={`/posts/${props.post.id}`}></Link>
       <div className="item-top item-info"></div>
       <div className="item-bottom item-info"></div>
     </div>
