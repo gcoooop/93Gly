@@ -1,6 +1,6 @@
 .manage-pane {
   display: flex;
-  height: 100vh;
+  height: calc(100vh - 72px);
 }
 
 .manage-pane-left {
@@ -78,24 +78,24 @@
     h2 {
       color: #0099e5;
       font-size: 14px;
-      margin-right: 5px;
       span {
-  
+        color: #b9c1c7;
+        margin-left: 5px;
       }
     }
   }
   .posts-grid-editor {
     display: flex;
     flex-wrap: wrap;
-    width: calc(100vw - 600px);
+    width: calc(100vw - 615px);
     min-width: 400px;
     background: #f7f8fa;
+    padding: 10px;
     .post-grid-item-editor {
       box-sizing: border-box;
       width: 30%;
       height: 200px;
-      margin-top: 20px;
-      margin-left: 20px;
+      margin: 10px;
       background-position: center;
       background-size: cover;
       border: 3px solid transparent;
@@ -126,14 +126,73 @@
     flex-direction: column;
     box-sizing: border-box;
     padding: 0 20px;
+    label {
+      margin-bottom: 10px;
+    }
+    textarea {
+      width: 93%;
+      height: 115px;
+      padding: 8px 10px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+      resize: none;
+      color: rgb(82, 85, 88);
+      border: 1px solid rgba(185, 193, 199, 0.5);
+      border-radius: 3px;
+      &:focus {
+        border-color: #0099e5;
+        box-shadow: none;
+        outline: none;
+        outline-offset: none;
+      }
+      &:disabled {
+        color: #b9c1c7;
+      }
+    }
     button {
       box-sizing: border-box;
-      margin: 10px;
-      padding: 0 10px;
+      color: white;
+      &:disabled {
+        cursor: default;
+      }
+    }
+
+    .delete-button {
+      width: 93%;
+      padding: 0 30px;
+      background: rgb(113, 118, 122);
+      border-radius: 3px;
+      line-height: 28px;
+      margin-bottom: 45px;
+      &:hover {
+        cursor: pointer;
+        background: #7d8387;
+      }
+    }
+
+    .form-controls {
+      display: flex;
+      justify-content: space-around;
+      border-top: 1px solid rgb(238, 239, 242);
+    }
+
+    .save-button {
       border: 1px solid #34bf49;
+      color: white;
+      background: #34bf49;
+      height: 40px;
+      padding: 5px 30px;
+      margin-left: 20px;
       &:hover {
         cursor: pointer;
         background: #41cb56;
+      }
+    }
+    .cancel-button {
+      color: #71767a;
+      background: white;
+      &:hover {
+        color:  #ff4c4c;;
       }
     }
   }

@@ -74,10 +74,10 @@ class EditPostForm extends React.Component {
             <textarea type="text" value={this.state.title} onChange={this.updateInput("title")} disabled={!this.state.id}/>
             <label>Caption</label>
             <textarea type="text" value={this.state.caption} onChange={this.updateInput("caption")} disabled={!this.state.id}/>
-            <button onClick={this.handleSubmit} disabled={!this.state.id}>Submit</button>
+            <button className="delete-button" onClick={this.handleDelete} disabled={!this.state.id}>Delete Post</button>
             <div className="form-controls">
               <button className="cancel-button" onClick={this.clearSelection} disabled={!this.state.id}>Cancel</button>
-              <button onClick={this.handleDelete} disabled={!this.state.id}>Delete Post</button>
+              <button className="save-button" onClick={this.handleSubmit} disabled={!this.state.id}>Save</button>
             </div>
           </form>
         </div>
