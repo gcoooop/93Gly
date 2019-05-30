@@ -1,14 +1,8 @@
 import React from "react";
 
 class PostShow extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { post: null };
-  }
-
   componentDidMount() {
     this.props.fetchPost(this.props.match.params.postId)
-      .then( post => this.setState({ post }));
   }
 
   componentDidUpdate(prevProps) {
