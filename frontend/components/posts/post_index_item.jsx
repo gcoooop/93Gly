@@ -10,8 +10,16 @@ class PostIndexItem extends React.Component {
   render()  {
     const img = new Image();
     img.src = this.props.post.photoUrl;
-    img.onloadend = () => this.setState({ loaded: true });
-    const imgW = img.width; 
+
+    const loadedTimer = setInterval(() => {
+      if (this.state.loaded) {
+        clearInterval(loadedTimer);
+        return; 
+      }
+      if (img.complete) this.setState({ loaded: true });
+    }, 1000);
+
+    const imgW = img.width;
     const imgH = img.height; 
     const calcW = 300 * imgW / imgH;
     const styles = {
@@ -20,7 +28,6 @@ class PostIndexItem extends React.Component {
       flexShrink: 0,
       flexBasis: `${calcW}px`,
     };
-  
     if (this.state) {
       return (
         <div className="post-grid-item" style={ styles }>
