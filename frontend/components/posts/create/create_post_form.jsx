@@ -167,7 +167,7 @@ class CreatePostForm extends React.Component {
             <form className="post-form">
               <fieldset disabled={!this.state.selectedPost.idx}>
                 <div className="top">
-                  <button className="submit-button" onClick={this.handleSubmit}>Submit</button>
+                  <button className="submit-button" disabled={false} onClick={this.handleSubmit}>Submit</button>
                   <span>
                     {postsToPublishCount === 1 ? "1 post " : `${postsToPublishCount} posts ` } 
                     to publish
