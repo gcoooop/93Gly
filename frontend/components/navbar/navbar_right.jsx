@@ -43,7 +43,7 @@ class NavBarRight extends React.Component {
         </li>
         <li><Link to="/manage" className="nav-right-plus"/></li>
       </ul>
-      );
+        );
     } else {
       navRight = (
         <ul className="nav-right">

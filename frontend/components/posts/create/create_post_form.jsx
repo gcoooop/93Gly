@@ -60,6 +60,19 @@ class CreatePostForm extends React.Component {
   }
 
   updateFileInput(files) {
+    const getTitleFromFile = fileName => {
+      const noExt = fileName.slice(0, fileName.lastIndexOf("."));
+      const validChars = "abcdefghijklmnopqrstuvwxyz1234567890";
+      let titleGuess = "";
+      noExt.split("").forEach( char => {
+        if (validChars.includes(char)) {
+          titleGuess += char;
+        } else {
+          titleGuess += " ";
+        }
+      });
+      return titleGuess;
+    };
     this.setState({ uploadStatus: "processing" });
     files.forEach( (file, n) => {
       const reader = new FileReader();
@@ -68,7 +81,7 @@ class CreatePostForm extends React.Component {
           photoUrl: reader.result, 
           photoFile: file, 
           idx: this.state.uploadedPostsCount, 
-          title: "", 
+          title: getTitleFromFile(file.name), 
           caption: "" 
         });
         const { uploadedPosts } = this.props;
@@ -89,7 +102,7 @@ class CreatePostForm extends React.Component {
   }
 
   clearSelection(event) {
-    if (event.target.className === "post-uploader-list") {
+    if (event.target.className === "post-uploader-list" || event.target.className === "post-uploader-list-wrapper") {
       const defaultState = { idx: "", title: "", caption: "", photoUrl: "", photoFile: "" };
       this.setState({ selectedPost: defaultState });
     }
@@ -106,6 +119,12 @@ class CreatePostForm extends React.Component {
   render() {
     const { uploadStatus } = this.state;
     const postsToPublishCount = Object.keys(this.props.uploadedPosts).length;
+    let editHeader;
+    if (this.state.selectedPost.idx) {
+      editHeader = <h2>Editing A Photo</h2>
+    } else {
+      editHeader = <h2 style={{color:"#c5c5c5"}}>Edit</h2>
+    }
     const promptText = this.state.uploadStatus === "waiting" ? (
       <div className="prompt-text">
         <a>Select Photos</a>
@@ -113,7 +132,7 @@ class CreatePostForm extends React.Component {
       </div>
     ) : (
       <div className="prompt-text">
-        <img/>
+        <a>+</a>
         <p>Add more photos</p>
       </div>
     )
@@ -158,11 +177,13 @@ class CreatePostForm extends React.Component {
         </li>
       );
       return (
-        <div className="post-uploader loaded">
-          <ul className="post-uploader-list" onClick={this.clearSelection}>
-            {createPostItems}
-            <li className="post-uploader-list-item dropzone-item">{dropzoneEle}</li>
-          </ul>
+        <div className="post-uploader loaded" onClick={this.clearSelection}>
+          <div className="post-uploader-list-wrapper">
+            <ul className="post-uploader-list">
+              {createPostItems}
+              <li className="post-uploader-list-item dropzone-item">{dropzoneEle}</li>
+            </ul>
+          </div>
           <div className="form-wrapper">
             <form className="post-form">
               <fieldset disabled={!this.state.selectedPost.idx}>
@@ -173,6 +194,7 @@ class CreatePostForm extends React.Component {
                     to publish
                   </span>
                 </div>
+                {editHeader}
                 <div className="input-fields">
                   <label>Title</label>
                   <textarea type="text" value={this.state.selectedPost.title} onChange={this.updateInput("title")}/>

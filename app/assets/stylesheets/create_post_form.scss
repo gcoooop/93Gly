@@ -58,10 +58,16 @@
   font-size: 36px;
 }
 
+.post-uploader-list-wrapper {
+  width: calc(100% - 340px);
+  background: #f7f8fa;
+  overflow-y: auto;
+}
+
 .post-uploader-list {
   display: flex;
   flex-wrap: wrap;
-  width: calc(100% - 340px);
+  width: 100%;
   background: #f7f8fa;
   overflow-y: auto;
 }
@@ -127,10 +133,15 @@
     width: 300px;
     box-sizing: border-box;
     border: 2px solid #b9c1c7;
-    img {
-      width: 20px;
-      height: 20px;
-      content: image-url("plus_sign.svg");
+    a {
+      font-weight: bold;
+      font-size: 40px;
+      color: #b9c1c7;
+    }
+    p {
+      font-weight: 700;
+      font-size: 17px;
+      color: #b9c1c7;
     }
   }
   .form-wrapper {
@@ -144,6 +155,13 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
+        h2 {
+          padding-top: 20px;
+          padding-left: 20px;
+          box-sizing: border-box;
+          line-height: 18.5px;
+          font-size: 18px;
+        }
         label {
           color: #0099e5;
           margin-bottom: 10px;
