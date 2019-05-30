@@ -1,19 +1,19 @@
 import { connect } from "react-redux";
 import { openModal } from "../../actions/modal_actions";
-import { fetchUserPosts } from "../../actions/post_actions";
+import { fetchPostsByIds } from "../../actions/post_actions";
 import { clearErrors } from "../../actions/session_actions";
 import Manage from "./manage";
 
 const mstp = state => {
   return {
     postCount: Object.keys(state.entities.posts).length,
-    currentUserId: state.session.currentUserId
+    currentUserPostIds: state.entities.users[state.session.currentUserId].postIds
   };
 };
 
 const mdtp = dispatch => {
   return {
-    fetchUserPosts: userId => dispatch(fetchUserPosts(userId)),
+    fetchPostsByIds: postIds => dispatch(fetchPostsByIds(postIds)),
     openModal: modal => dispatch(openModal(modal)),
     clearErrors: () => dispatch(clearErrors())
   };

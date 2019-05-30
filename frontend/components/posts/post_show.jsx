@@ -30,9 +30,22 @@ class PostShow extends React.Component {
             <img src={post.photoUrl}/>
           </div>
         </div>
-        <div className="post-details">
-          {post.title}
-          {post.caption}
+        <div className="details-container">
+          <div className="details-container-left">
+            <div className="post-buttons">
+              {/* like share more buttons */}
+            </div>
+            <div className="post-details">
+              {post.title}
+              {/* photograher name */}
+              {post.caption}
+            </div>
+          </div>
+          <div className="details-container-right">
+            <div className="comments">
+              {/* comments section */}
+            </div>
+          </div>
         </div>
       </div>
     );

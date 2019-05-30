@@ -5,11 +5,11 @@ export const fetchPosts = () => {
   });
 };
 
-export const fetchUserPosts = userId => {
+export const fetchPostsByIds = postIds => {
   return $.ajax({
     method: "GET",
     url: "/api/posts",
-    data: { userId }
+    data: { postIds }
   });
 };
 

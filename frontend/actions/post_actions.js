@@ -59,9 +59,9 @@ export const fetchPosts = () => {
   };
 };
 
-export const fetchUserPosts = userId => {
+export const fetchPostsByIds = postIds => {
   return dispatch => {
-    return PostApiUtil.fetchUserPosts(userId)
+    return PostApiUtil.fetchPostsByIds(postIds)
       .then( posts => dispatch(receivePosts(posts)) );
   };
 };

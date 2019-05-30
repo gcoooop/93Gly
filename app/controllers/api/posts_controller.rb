@@ -1,8 +1,8 @@
 class Api::PostsController < ApplicationController
 
   def index
-    if params[:userId]
-      @posts = Post.where(photographer_id: params[:userId])
+    if params[:postIds]
+      @posts = Post.where(id: params[:postIds])
     else
       @posts = Post.all
     end

@@ -7,7 +7,7 @@ class Manage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUserPosts(this.props.currentUserId);
+    this.props.fetchPostsByIds(this.props.currentUserPostIds);
   }
 
   render() {
