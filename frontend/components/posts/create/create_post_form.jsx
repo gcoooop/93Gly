@@ -173,11 +173,11 @@ class CreatePostForm extends React.Component {
             removeUpload={this.removeUpload(post.idx)}
             makeSelection={this.makeSelection(post).bind(this)}
           /> 
-          <input type="text" value={post.title} onClick={this.makeSelection(post)} onChange={this.updateInput("title")}/>
+          <input type="text" value={post.title} onMouseDown={this.makeSelection(post)} onChange={this.updateInput("title")}/>
         </li>
       );
       return (
-        <div className="post-uploader loaded" onClick={this.clearSelection}>
+        <div className="post-uploader loaded" onMouseDown={this.clearSelection}>
           <div className="post-uploader-list-wrapper">
             <ul className="post-uploader-list">
               {createPostItems}
@@ -209,7 +209,7 @@ class CreatePostForm extends React.Component {
 
     } else if (uploadStatus === "publishing") {
       return (
-        <div className="post-uploader">
+        <div className="post-uploader publishing">
           <h1>Publishing...</h1>
         </div>
       );
