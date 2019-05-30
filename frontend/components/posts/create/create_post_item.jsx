@@ -10,7 +10,6 @@ const CreatePostItem = props => {
       <div className="item-top item-info">
         <div onClick={props.removeUpload} className="close-x-item">&times;</div>
       </div>
-      <div className="item-bottom item-info"></div>
     </div>
   );
 };
