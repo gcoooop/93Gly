@@ -97,7 +97,6 @@ class CreatePostForm extends React.Component {
 
   makeSelection(post) {
     return event => {
-      // debugger
       if (this.state.selectedPost.idx !== post.idx) {
         this.setState({ selectedPost: post });
       }
@@ -106,6 +105,7 @@ class CreatePostForm extends React.Component {
 
   render() {
     const { uploadStatus } = this.state;
+    const postsToPublishCount = Object.keys(this.props.uploadedPosts).length;
     const promptText = this.state.uploadStatus === "waiting" ? (
       <div className="prompt-text">
         <a>Select Photos</a>
@@ -154,7 +154,7 @@ class CreatePostForm extends React.Component {
             removeUpload={this.removeUpload(post.idx)}
             makeSelection={this.makeSelection(post).bind(this)}
           /> 
-          <input type="text" value={post.title} onChange={this.updateInput("title")}/>
+          <input type="text" value={post.title} onClick={this.makeSelection(post)} onChange={this.updateInput("title")}/>
         </li>
       );
       return (
@@ -165,11 +165,21 @@ class CreatePostForm extends React.Component {
           </ul>
           <div className="form-wrapper">
             <form className="post-form">
-              <label>Title</label>
-              <input type="text" value={this.state.selectedPost.title} onChange={this.updateInput("title")}/>
-              <label>Caption</label>
-              <input type="text" value={this.state.selectedPost.caption} onChange={this.updateInput("caption")}/>
-              <button onClick={this.handleSubmit}>Submit</button>
+              <fieldset disabled={!this.state.selectedPost.idx}>
+                <div className="top">
+                  <button className="submit-button" onClick={this.handleSubmit}>Submit</button>
+                  <span>
+                    {postsToPublishCount === 1 ? "1 post " : `${postsToPublishCount} posts ` } 
+                    to publish
+                  </span>
+                </div>
+                <div className="input-fields">
+                  <label>Title</label>
+                  <textarea type="text" value={this.state.selectedPost.title} onChange={this.updateInput("title")}/>
+                  <label>Caption</label>
+                  <textarea type="text" value={this.state.selectedPost.caption} onChange={this.updateInput("caption")}/>
+                  </div>
+              </fieldset>
             </form>
           </div>
         </div>

@@ -119,6 +119,82 @@
     form {
       display: flex; 
       flex-direction: column;
+      fieldset {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        label {
+          color: #0099e5;
+          margin-bottom: 10px;
+        }
+        &:disabled label {
+          color: #b3e1f7;
+        }
+        .input-fields {
+          display: flex;
+          flex-direction: column;
+          padding: 20px;
+          box-sizing: border-box;
+        }
+        textarea {
+          width: 100%;
+          height: 115px;
+          padding: 8px 10px;
+          margin-bottom: 20px;
+          box-sizing: border-box;
+          resize: none;
+          color: rgb(82, 85, 88);
+          font-size: 14px;
+          border: 1px solid rgba(185, 193, 199, 0.5);
+          border-radius: 3px;
+          line-height: 1.4em;
+          &:focus {
+            border-color: #0099e5;
+            box-shadow: none;
+            outline: none;
+            outline-offset: none;
+          }
+          &:disabled {
+            color: #b9c1c7;
+          }
+        }
+        button {
+          display: flex;
+          justify-content: center;
+          box-sizing: border-box;
+          color: white;
+        }
+        .top {
+          display: flex;
+          flex-direction: column;
+          .submit-button {
+            color: white;
+            background: #34bf49;
+            border: 1px solid #34bf49;
+            border-radius: 3px;
+            height: 40px;
+            padding: 0px 10px;
+            margin: 10px;
+            width: 320px;
+            font-weight: 700;
+            &:hover {
+              cursor: pointer;
+              background: #41cb56;
+            }
+            &:disabled {
+              cursor: default;
+              border-color: #e1f5e4;
+              background: #e1f5e4;
+            }
+          }
+          span {
+            color: #71767a;
+            font-size: 11px;
+            padding: 10px;
+            padding-top: 0;
+          }
+        }
+      }
     }
   }
 }
