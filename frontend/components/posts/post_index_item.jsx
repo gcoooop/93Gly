@@ -7,17 +7,26 @@ class PostIndexItem extends React.Component {
     this.state = { loaded: false };
   }
 
+  componentWillUnmount() {
+    clearInterval(this.loadedTimer);
+  }
+
+  loadedTimer(img) {
+    setInterval( () => {
+      if (this.state.loaded) {
+        clearInterval(this.loadedTimer);
+        return; 
+      }
+      if (img.complete) this.setState({ loaded: true });
+      console.log("leaking!");
+    }, 200);
+  }
+
   render()  {
     const img = new Image();
     img.src = this.props.post.photoUrl;
 
-    const loadedTimer = setInterval(() => {
-      if (this.state.loaded) {
-        clearInterval(loadedTimer);
-        return; 
-      }
-      if (img.complete) this.setState({ loaded: true });
-    }, 1000);
+    this.loadedTimer(img);
 
     const imgW = img.width;
     const imgH = img.height; 
