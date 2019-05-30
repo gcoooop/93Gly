@@ -21,6 +21,7 @@
  *= manage_pane.scss
  *= create_post_form.scss
  *= posts_grid.scss
+ *= post_show.scss
  */
  
  html, body {

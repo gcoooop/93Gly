@@ -24,12 +24,16 @@ class PostShow extends React.Component {
     }
     
     return (
-      <div>
-        <figure>
-          <img src={post.photoUrl}/>
-        </figure>
-        {post.title}
-        {post.caption}
+      <div className="show-page">
+        <div className="photo-container">
+          <div className="photo-wrapper">
+            <img src={post.photoUrl}/>
+          </div>
+        </div>
+        <div className="post-details">
+          {post.title}
+          {post.caption}
+        </div>
       </div>
     );
   }

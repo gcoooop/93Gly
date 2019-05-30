@@ -1,0 +1,23 @@
+.show-page {
+  display: flex;
+  flex-direction: column;
+}
+
+.photo-container {
+  background: rgb(34, 34, 34);
+  min-height: 600px;
+  height: calc(100vh - 128px);
+  padding: 32px 64px;
+  box-sizing: border-box;
+  .photo-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    img {
+      max-height: 100%;
+      max-width: 100%;
+    }
+  }
+}
