@@ -18,7 +18,6 @@ class PostIndexItem extends React.Component {
         return; 
       }
       if (img.complete) this.setState({ loaded: true });
-      console.log("leaking!");
     }, 200);
   }
 
