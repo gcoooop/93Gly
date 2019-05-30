@@ -1,18 +1,20 @@
 import { connect } from "react-redux";
 import { fetchPost } from "../../actions/post_actions";
-import { fetchUser } from "../../actions/user_actions";
 import PostShow from "./post_show";
 
 const mstp = (state, ownProps) => {
+  const post = state.entities.posts[ownProps.match.params.postId];
+  let photographer;
+  if (post) photographer = state.entities.users[post.photographerId];
   return {
-    post: state.entities.posts[ownProps.match.params.postId]
+    post,
+    photographer
   };
 };
 
 const mdtp = dispatch => {
   return {
-    fetchPost: id => dispatch(fetchPost(id)),
-    fetchUser: id => dispatch(fetchUser(id))
+    fetchPost: id => dispatch(fetchPost(id))
   };
 };
 
