@@ -73,3 +73,7 @@ The manage pane allows the logged in user to edit or delete posts they have uplo
 On the same pane, you can also click the upload button to render a modal with instructions on how to upload as many posts as the user would like. This form contains a "drag and drop" file upload feature, and takes a guess at what the post's title would be based on the file name. After file selection, the form displays a preview of the images the user has selected along with the predicted title. The user can edit the post details before submission, of course. This form also updates the UI to reflect which image is currently selected for editing by highlighting the photo and enabling the included input fields.
 
 The reason why this manage pane was challenging portion was due to the immense functionality this single page can provide. Structuring the page and its components efficiently required planning and a lot of refactoring to improve existing features and to introduce new ones.
+
+### Future Features
+
+Features that have not been implemented yet include: liking and commenting on posts, following other users' accounts, a public profile page with all of your brilliant photography! 
