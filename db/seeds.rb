@@ -73,7 +73,3 @@ post.photo.attach(io: file, filename: "veil_nebula.png")
 post = Post.create!(title: "Wizard Nebula", caption: "Photo credit to u/japzz", photographer_id: hal.id)
 file = open('http://93gly-seeds.s3.amazonaws.com/wizard_nebula.jpg')
 post.photo.attach(io: file, filename: "wizard_nebula.jpg")
-
-post = Post.create!(title: "Wizard Nebula", caption: "Photo credit to u/japzz", photographer_id: hal.id)
-file = open('http://93gly-seeds.s3.amazonaws.com/wizard_nebula.jpg')
-post.photo.attach(io: file, filename: "wizard_nebula.jpg")
