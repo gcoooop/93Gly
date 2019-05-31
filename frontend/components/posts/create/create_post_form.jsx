@@ -62,10 +62,10 @@ class CreatePostForm extends React.Component {
   updateFileInput(files) {
     const getTitleFromFile = fileName => {
       const noExt = fileName.slice(0, fileName.lastIndexOf("."));
-      const validChars = "abcdefghijklmnopqrstuvwxyz1234567890";
+      const validChars = /[a-z0-9]/;
       let titleGuess = "";
       noExt.split("").forEach( char => {
-        if (validChars.includes(char)) {
+        if (validChars.test(char)) {
           titleGuess += char;
         } else {
           titleGuess += " ";
