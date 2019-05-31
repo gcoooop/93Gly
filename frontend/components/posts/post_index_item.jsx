@@ -5,34 +5,29 @@ class PostIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loaded: false };
-  }
+    this.img = new Image();
+    this.img.src = props.post.photoUrl;
 
-  componentDidMount() {
-    this.mounted = true;
+    this.loadedTimer();
   }
 
   componentWillUnmount() {
-    this.mounted = false;
+    clearInterval(this.interval);
   }
 
-  loadedTimer(img) {
-    setInterval( () => {
-      if (this.state.loaded || !this.mounted) {
-        clearInterval(this.loadedTimer);
+  loadedTimer() {
+    this.interval = setInterval( () => {
+      if (this.img.complete) {
+        this.setState({ loaded: true });
+        clearInterval(this.interval);
         return; 
       }
-      if (img.complete) this.setState({ loaded: true });
     }, 1000);
   }
 
   render()  {
-    const img = new Image();
-    img.src = this.props.post.photoUrl;
-
-    this.loadedTimer(img);
-
-    const imgW = img.width;
-    const imgH = img.height; 
+    const imgW = this.img.width;
+    const imgH = this.img.height; 
     const calcW = 300 * imgW / imgH;
     const styles = {
       backgroundImage: `url(${this.props.post.photoUrl})`,
