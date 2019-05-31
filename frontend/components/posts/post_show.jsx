@@ -12,8 +12,8 @@ class PostShow extends React.Component {
   }
 
   render() {
-    const { post } = this.props;
-    if (!post) {
+    const { post, photographer } = this.props;
+    if (!post || !photographer) {
       return <div>Loading...</div>;
     }
     
@@ -30,9 +30,14 @@ class PostShow extends React.Component {
               {/* like share more buttons */}
             </div>
             <div className="post-details">
-              {post.title}
-              {/* photograher name */}
-              {post.caption}
+              <div className="post-details-header">
+                <h3>{post.title}</h3>
+                <span>by {photographer.username}</span>
+                {/* username should be a link to profile when that feature is implemented */}
+              </div>
+              <div className="post-details-info">
+                <span>{post.caption}</span>
+              </div>
             </div>
           </div>
           <div className="details-container-right">

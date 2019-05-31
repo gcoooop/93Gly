@@ -1,6 +1,7 @@
 .show-page {
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 }
 
 .photo-container {
@@ -20,10 +21,40 @@
       max-width: 100%;
     }
   }
-  .details-container {
-    padding: 0 64px;
-    .details-container-left {
-      
+}
+
+.details-container {
+  padding: 0 64px;
+  .details-container-left {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    padding: 0 16px;
+    margin-bottom: 64px;
+    .post-details {
+      display: flex;
+      flex-direction: column;
+      .post-details-header {
+        margin: 32px 0;
+        padding-bottom: 24px;
+        border-bottom: 1px solid rgb(215, 216, 219);
+        box-sizing: border-box;
+        h3 {
+          font-size: 24px;
+          line-height: 28px;
+          font-weight: bold;
+          letter-spacing: -0.2px;
+          color: rgb(34, 34, 34);
+        }
+        span {
+          font-size: 18px;
+          line-height: 24px;
+        }
+      }
+    }
+    .post-details-info {
+      font-size: 18px;
+      line-height: 24px;
     }
   }
 }
