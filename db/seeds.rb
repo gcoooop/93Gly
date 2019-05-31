@@ -42,9 +42,17 @@ post = Post.create!(title: "Fighting Dragons of Ara", caption: "Photo credit to 
 file = open('http://93gly-seeds.s3.amazonaws.com/fighting_dragons_of_ara.jpg')
 post.photo.attach(io: file, filename: "fighting_dragons_of_ara.jpg")
 
-post = Post.create!(title: "Hidden Galaxy", caption: "Photo credit to u/burscikas", photographer_id: earthling.id)
-file = open('http://93gly-seeds.s3.amazonaws.com/hidden_galaxy.png')
-post.photo.attach(io: file, filename: "hidden_galaxy.png")
+post = Post.create!(title: "Bubble Nebula", caption: "Photo credit to u/firemandan666", photographer_id: earthling.id)
+file = open('http://93gly-seeds.s3.amazonaws.com/bubble_nebula.jpg')
+post.photo.attach(io: file, filename: "bubble_nebula.jpg")
+
+post = Post.create!(title: "California Nebula", caption: "Photo credit to u/CosmicWreckingBall", photographer_id: martian.id)
+file = open('http://93gly-seeds.s3.amazonaws.com/california_nebula.jpg')
+post.photo.attach(io: file, filename: "california_nebula.jpg")
+
+post = Post.create!(title: "Andromeda Galaxy", caption: "Photo credit to u/KBALLZZ", photographer_id: martian.id)
+file = open('http://93gly-seeds.s3.amazonaws.com/andromeda_galaxy.jpg')
+post.photo.attach(io: file, filename: "andromeda_galaxy.jpg")
 
 post = Post.create!(title: "Orion Nebula", caption: "Photo credit to u/_indeed_", photographer_id: dave.id)
 file = open('http://93gly-seeds.s3.amazonaws.com/orion_nebula.jpg')
@@ -54,9 +62,17 @@ post = Post.create!(title: "Tarantula Nebula", caption: "Photo credit to u/Winds
 file = open('http://93gly-seeds.s3.amazonaws.com/tarantula_nebula.jpg')
 post.photo.attach(io: file, filename: "tarantula_nebula.jpg")
 
+post = Post.create!(title: "Helix Nebula", caption: "Photo credit to u/joshborup", photographer_id: dave.id)
+file = open('http://93gly-seeds.s3.amazonaws.com/helix_nebula.jpg')
+post.photo.attach(io: file, filename: "helix_nebula.jpg")
+
 post = Post.create!(title: "Eastern Veil Nebula", caption: "Photo credit to u/Scaletto", photographer_id: hal.id)
 file = open('http://93gly-seeds.s3.amazonaws.com/veil_nebula.png')
 post.photo.attach(io: file, filename: "veil_nebula.png")
+
+post = Post.create!(title: "Wizard Nebula", caption: "Photo credit to u/japzz", photographer_id: hal.id)
+file = open('http://93gly-seeds.s3.amazonaws.com/wizard_nebula.jpg')
+post.photo.attach(io: file, filename: "wizard_nebula.jpg")
 
 post = Post.create!(title: "Wizard Nebula", caption: "Photo credit to u/japzz", photographer_id: hal.id)
 file = open('http://93gly-seeds.s3.amazonaws.com/wizard_nebula.jpg')
