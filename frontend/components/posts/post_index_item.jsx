@@ -21,7 +21,6 @@ class PostIndexItem extends React.Component {
         clearInterval(this.loadedTimer);
         return; 
       }
-      console.log("leaking!");
       if (img.complete) this.setState({ loaded: true });
     }, 250);
   }
