@@ -24,7 +24,9 @@ loadedTimer(img) {
       if (img.complete) this.setState({ loaded: true });
     }, 1000);
   }
+  
   ...
+  
   render() {
   const img = new Image();
   img.src = this.props.post.photoUrl;
@@ -38,7 +40,9 @@ loadedTimer(img) {
     backgroundImage: `url(${this.props.post.photoUrl})`,
     flex: `1 0 ${calcW}px`
   };
+  
   ...
+  
   }
 ```
 However, this did lead to some issues regarding memory leaks. If the user navigated off of the page before all of the images had loaded, the state would not be set, and the load timer would run forever. This issue was remedied by clearing the interval upon the component unmounting.
@@ -48,19 +52,23 @@ However, this did lead to some issues regarding memory leaks. If the user naviga
 
 The manage pane allows the logged in user to edit or delete posts they have uploaded, or create new posts. Bearing that in mind, this page is densely populated with components with various states that affect the UI. For example, a user can click on a post in the editor pane, which will highlight the selected post and update the state of the form (previously disabled due to no selection) to prefill inputs and reflect the editable information about said post.
 ```javascript
-    const getTitleFromFile = fileName => {
-      const noExt = fileName.slice(0, fileName.lastIndexOf("."));
-      const validChars = /[a-z0-9]/;
-      let titleGuess = "";
-      noExt.split("").forEach( char => {
-        if (validChars.test(char)) {
-          titleGuess += char;
-        } else {
-          titleGuess += " ";
-        }
-      });
-      return titleGuess;
-    };
+  ...
+
+  const getTitleFromFile = fileName => {
+    const noExt = fileName.slice(0, fileName.lastIndexOf("."));
+    const validChars = /[a-z0-9]/;
+    let titleGuess = "";
+    noExt.split("").forEach( char => {
+      if (validChars.test(char)) {
+        titleGuess += char;
+      } else {
+        titleGuess += " ";
+      }
+    });
+    return titleGuess;
+  };
+  
+ ...
 ```
 On the same pane, you can also click the upload button to render a modal with instructions on how to upload as many posts as the user would like. This form contains a "drag and drop" file upload feature, and takes a guess at what the post's title would be based on the file name. After file selection, the form displays a preview of the images the user has selected along with the predicted title. The user can edit the post details before submission, of course. This form also updates the UI to reflect which image is currently selected for editing by highlighting the photo and enabling the included input fields.
 
