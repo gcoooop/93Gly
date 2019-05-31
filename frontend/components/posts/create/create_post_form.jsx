@@ -186,14 +186,14 @@ class CreatePostForm extends React.Component {
           </div>
           <div className="form-wrapper">
             <form className="post-form">
+              <div className="top">
+                <button className="submit-button" disabled={false} onClick={this.handleSubmit}>Submit</button>
+                <span>
+                  {postsToPublishCount === 1 ? "1 post " : `${postsToPublishCount} posts ` } 
+                  to publish
+                </span>
+              </div>
               <fieldset disabled={!this.state.selectedPost.idx}>
-                <div className="top">
-                  <button className="submit-button" disabled={false} onClick={this.handleSubmit}>Submit</button>
-                  <span>
-                    {postsToPublishCount === 1 ? "1 post " : `${postsToPublishCount} posts ` } 
-                    to publish
-                  </span>
-                </div>
                 {editHeader}
                 <div className="input-fields">
                   <label>Title</label>
