@@ -42,9 +42,9 @@ post = Post.create!(title: "Fighting Dragons of Ara", caption: "Photo credit to 
 file = open('http://93gly-seeds.s3.amazonaws.com/fighting_dragons_of_ara.jpg')
 post.photo.attach(io: file, filename: "fighting_dragons_of_ara.jpg")
 
-post = Post.create!(title: "Bubble Nebula", caption: "Photo credit to u/firemandan666", photographer_id: earthling.id)
-file = open('http://93gly-seeds.s3.amazonaws.com/bubble_nebula.jpg')
-post.photo.attach(io: file, filename: "bubble_nebula.jpg")
+post = Post.create!(title: "Hidden Galaxy", caption: "Photo credit to u/burscikas", photographer_id: earthling.id)
+file = open('http://93gly-seeds.s3.amazonaws.com/hidden_galaxy.png')
+post.photo.attach(io: file, filename: "hidden_galaxy.png")
 
 post = Post.create!(title: "California Nebula", caption: "Photo credit to u/CosmicWreckingBall", photographer_id: martian.id)
 file = open('http://93gly-seeds.s3.amazonaws.com/california_nebula.jpg')
