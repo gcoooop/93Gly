@@ -7,18 +7,23 @@ class PostIndexItem extends React.Component {
     this.state = { loaded: false };
   }
 
+  componentDidMount() {
+    this.mounted = true;
+  }
+
   componentWillUnmount() {
-    clearInterval(this.loadedTimer);
+    this.mounted = false;
   }
 
   loadedTimer(img) {
     setInterval( () => {
-      if (this.state.loaded) {
+      if (this.state.loaded || !this.mounted) {
         clearInterval(this.loadedTimer);
         return; 
       }
+      console.log("leaking!");
       if (img.complete) this.setState({ loaded: true });
-    }, 200);
+    }, 250);
   }
 
   render()  {
@@ -36,7 +41,7 @@ class PostIndexItem extends React.Component {
       flexShrink: 0,
       flexBasis: `${calcW}px`,
     };
-    if (this.state) {
+    if (this.state.loaded) {
       return (
         <div className="post-grid-item" style={ styles }>
           <Link to={`/posts/${this.props.post.id}`}></Link>
