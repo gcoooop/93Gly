@@ -1,6 +1,6 @@
 # 93Gly
 
-#### 93Gly is a social media application designed for astrophotographers to show off their images of the night sky and also view others' great work! Upload your photos, give them a title and description, and post them for the universe to see! [Visit us here!]:https://ninetythree-gly.herokuapp.com/#/
+#### 93Gly is a social media application designed for astrophotographers to show off their images of the night sky and also view others' great work! Upload your photos, give them a title and description, and post them for the universe to see! [Visit us here!](https://ninetythree-gly.herokuapp.com/#/)
 
 ### Technologies
 
