@@ -22,7 +22,7 @@ class PostIndexItem extends React.Component {
         return; 
       }
       if (img.complete) this.setState({ loaded: true });
-    }, 250);
+    }, 1000);
   }
 
   render()  {
@@ -36,9 +36,7 @@ class PostIndexItem extends React.Component {
     const calcW = 300 * imgW / imgH;
     const styles = {
       backgroundImage: `url(${this.props.post.photoUrl})`,
-      flexGrow: 1,
-      flexShrink: 0,
-      flexBasis: `${calcW}px`,
+      flex: `1 0 ${calcW}px`
     };
     if (this.state.loaded) {
       return (
