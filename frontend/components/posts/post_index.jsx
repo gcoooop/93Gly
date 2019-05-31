@@ -11,7 +11,7 @@ class PostIndex extends React.Component {
     return (
       <div className="post-index">
         <div className="post-index-header">
-          <h1>What's popular today</h1>
+          <h1>What's popular today on Earth</h1>
           <p>See recently added photos</p>
         </div>
         <div className="posts-grid">

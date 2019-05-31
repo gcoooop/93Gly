@@ -1,15 +1,22 @@
 // font-family: 'Nanum Gothic Coding', monospace;
-.splash-slider {
+.splash {
   display: flex;
-  align-items: center;
-  box-sizing: border-box;
+  justify-content: center;
   padding: 0 64px;
   padding-top: 64px;
-  // background: #18d6c0;
   background: #24cbb6;
   background-image: image_url("seamless_earth_path_white2.svg");
-  background-size: auto 134%;
-  background-position-y: -150px;
+  background-size: 100%;
+  background-position-y: bottom;
+  background-repeat: no-repeat;
+}
+
+.splash-slider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  max-height: 1000px;
 }
 
 
@@ -19,6 +26,7 @@
   display: flex;
   flex-direction: column;
   width: 60%;
+  max-width: 750px;
   img {
     width: 100%;
     content: image_url("crab-nebula-mosaic.jpg");
