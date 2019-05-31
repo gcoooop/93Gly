@@ -6,10 +6,6 @@ class Manage extends React.Component {
     this.props.clearErrors();
   }
 
-  componentDidMount() {
-    this.props.fetchPostsByIds(this.props.currentUserPostIds);
-  }
-
   render() {
     return (
       <div className="manage-pane">

@@ -24,7 +24,8 @@ export const receivePost = payload => {
   };
 };
 
-export const removePost = post => {
+export const removePost = payload => {
+  const { post } = payload;
   return {
     type: REMOVE_POST,
     postId: post.id

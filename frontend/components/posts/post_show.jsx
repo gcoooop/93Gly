@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 class PostShow extends React.Component {
   componentDidMount() {
     this.props.fetchPost(this.props.match.params.postId)
@@ -14,12 +14,13 @@ class PostShow extends React.Component {
   render() {
     const { post, photographer } = this.props;
     if (!post || !photographer) {
-      return <div>Loading...</div>;
+      return <div className="loading">Loading...</div>;
     }
     
     return (
       <div className="show-page">
         <div className="photo-container">
+          <Link to="/">&times;</Link>
           <div className="photo-wrapper">
             <img src={post.photoUrl}/>
           </div>

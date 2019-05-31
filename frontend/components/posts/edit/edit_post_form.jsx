@@ -12,6 +12,10 @@ class EditPostForm extends React.Component {
     this.makeSelection = this.makeSelection.bind(this);
     this.clearSelection = this.clearSelection.bind(this);
   }
+
+  componentDidMount() {
+    this.props.fetchPostsByIds(this.props.currentUserPostIds);
+  }
   
   handleSubmit(event) {
     event.preventDefault();
