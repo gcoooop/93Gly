@@ -15,35 +15,25 @@ One of the most difficult issues with this project was rendering the images on t
 
 I tackled this problem by computing the aspect ratio of the uploaded image and solving for a width that would preserve the quality of the image, and used the flex property to dynamically resize each image dependent on the size of the window. Render logic was dependent on whether or not the image was fully loaded. If the image had not fully loaded, the computed width would result in NaN. So, I implemented a timer that checked if the image had finished loading, and upon completion, the component would rerender thus computing the width properly.
 ```javascript
-loadedTimer(img) {
-    setInterval( () => {
-      if (this.state.loaded) {
-        clearInterval(this.loadedTimer);
+  loadedTimer() {
+    this.interval = setInterval( () => {
+      if (this.img.complete) {
+        this.setState({ loaded: true });
+        clearInterval(this.interval);
         return; 
       }
-      if (img.complete) this.setState({ loaded: true });
     }, 1000);
   }
-  
-  ...
-  
-  render() {
-  const img = new Image();
-  img.src = this.props.post.photoUrl;
 
-  this.loadedTimer(img);
-
-  const imgW = img.width;
-  const imgH = img.height; 
-  const calcW = 300 * imgW / imgH;
-  const styles = {
-    backgroundImage: `url(${this.props.post.photoUrl})`,
-    flex: `1 0 ${calcW}px`
-  };
-  
-  ...
-  
-  }
+  render()  {
+    const imgW = this.img.width;
+    const imgH = this.img.height; 
+    const calcW = 300 * imgW / imgH;
+    const styles = {
+      backgroundImage: `url(${this.props.post.photoUrl})`,
+      flex: `1 0 ${calcW}px`
+    };
+...
 ```
 However, this did lead to some issues regarding memory leaks. If the user navigated off of the page before all of the images had loaded, the state would not be set, and the load timer would run forever. This issue was remedied by clearing the interval upon the component unmounting.
 
