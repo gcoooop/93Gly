@@ -1,19 +1,22 @@
 # 93Gly
 
-#### 93Gly is a social media application designed for astrophotographers to show off their images of the night sky and also view others' great work! Upload your photos, give them a title and description, and post them for the universe to see! [Visit us here!](https://ninetythree-gly.herokuapp.com/#/)
+#### About
+
+93Gly is a social media application designed for astrophotographers to show off their images of the night sky and also view others' great work. Upload your photos, give them a title and description, and post them for the universe to see. [Check it out!](https://ninetythree-gly.herokuapp.com/#/)
+
+![alt text](./screenshot/screenshot.png)
 
 ### Technologies
 
 93Gly uses a Rails API backend to fetch post and user information from a Postgres database and photos hosted on AWS's S3.
 The front end uses React and Redux to manage and display incoming data to the user.
 
-### Challenges
-
 #### The Home Page
 
 One of the most difficult issues with this project was rendering the images on the home page in a fashion that was information dense while also visually satisfying. Images are uploaded at various resolutions and aspect ratios, so displaying all of these images on a single page without looking like a mess was challenging.
 
-I tackled this problem by computing the aspect ratio of the uploaded image and solving for a width that would preserve the quality of the image, and used the flex property to dynamically resize each image dependent on the size of the window. Render logic was dependent on whether or not the image was fully loaded. If the image had not fully loaded, the computed width would result in NaN. So, I implemented a timer that checked if the image had finished loading, and upon completion, the component would rerender thus computing the width properly.
+I tackled this problem by computing the aspect ratio of the uploaded image and solving for a width that would preserve the quality of the image, and used the flex property to dynamically resize each image dependent on the size of the window. Render logic was dependent on whether or not the image was fully loaded. If the image had not completed loading, the computed width would result in NaN. So, I implemented a timer that checked if the image had finished loading, and upon completion, the component would rerender thus computing the width properly.
+
 ```javascript
   loadedTimer() {
     this.interval = setInterval( () => {
