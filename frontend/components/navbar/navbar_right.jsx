@@ -41,10 +41,9 @@ class NavBarRight extends React.Component {
             <li onClick={logout}>Log Out</li>
           </ul>
         </li>
-        <li className="nav-right-plus"></li>
-        {/* ^^^^ add click handler on this for redirect to add photo page ^^^^ */}
+        <li><Link to="/manage" className="nav-right-plus"/></li>
       </ul>
-      );
+        );
     } else {
       navRight = (
         <ul className="nav-right">

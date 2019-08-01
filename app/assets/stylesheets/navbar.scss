@@ -69,6 +69,7 @@ nav {
   height: 32px;
   padding: 0 16px;
   border-radius: 16px;
+  box-sizing: border-box;
   &:hover {
     background: rgb(33, 124, 250);
   }
@@ -90,7 +91,7 @@ nav {
   position: relative;
   height: 32px;
   width: 32px;
-  background-image: image-url("default_user.jpg");
+  background-image: image_url("default_user.jpg");
   background-size: cover;
   background-position: center;
   border-radius: 16px;
