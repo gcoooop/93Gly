@@ -1,5 +1,14 @@
-.alert {
+.alert-concealer {
   z-index: 9999;
+  position: fixed;
+  top: 100%;
+  width: 100%;
+  height: 1000px;
+  background: white;
+}
+
+.alert {
+  z-index: 9998;
   position: fixed;
   left: 50%;
   transform: translateY(0%);

@@ -29,15 +29,18 @@ class Alert extends React.Component {
     const { errors } = this.props;
     const errorLis = errors.map( (error, idx) => <li key={idx}>{error}</li>)
     return (
-      <div className={`alert ${this.state.alertsShow}`}>
-        <div className="info-symbol">&#9432;</div>
-        <div className="alert-message">
-          <ul className="alert-list">
-            {errorLis}
-          </ul>
-          <div className="alert-dismiss" onClick={this.dismissAlerts}>&times;</div>
+      <>
+        <div className="alert-concealer" />
+        <div className={`alert ${this.state.alertsShow}`}>
+          <div className="info-symbol">&#9432;</div>
+          <div className="alert-message">
+            <ul className="alert-list">
+              {errorLis}
+            </ul>
+            <div className="alert-dismiss" onClick={this.dismissAlerts}>&times;</div>
+          </div>
         </div>
-      </div>
+      </>
     );
   }
 }
