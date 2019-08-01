@@ -16,7 +16,12 @@
  *= alert.scss
  *= navbar.scss
  *= splash.scss
+ *= modal.scss
  *= session_form.scss
+ *= manage_pane.scss
+ *= create_post_form.scss
+ *= posts_grid.scss
+ *= post_show.scss
  */
  
  html, body {
@@ -24,4 +29,5 @@
    margin: 0;
    /* font-family: Arial, Helvetica, sans-serif; */
    font-family: "Helvetica Neue", HelveticaNeue, Helvetica, TeXGyreHeros, FreeSans, "Nimbus Sans L", "Liberation Sans", Arial, sans-serif;
+   -webkit-font-smoothing: antialiased;
  }

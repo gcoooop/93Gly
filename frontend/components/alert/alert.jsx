@@ -18,6 +18,10 @@ class Alert extends React.Component {
   }
 
   dismissAlerts() {
+    setTimeout(() => {
+      this.props.clearErrors();
+    }, 525);
+    
     this.setState({ alertsShow: "hidden" });
   }
 
