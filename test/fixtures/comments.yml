@@ -1,13 +1,13 @@
 # == Schema Information
 #
-# Table name: posts
+# Table name: comments
 #
-#  id              :bigint           not null, primary key
-#  title           :string           default(""), not null
-#  caption         :string           default(""), not null
-#  photographer_id :integer          not null
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
+#  id         :bigint           not null, primary key
+#  body       :string           not null
+#  post_id    :integer          not null
+#  author_id  :integer          not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
