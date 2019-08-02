@@ -24,6 +24,10 @@ class User < ApplicationRecord
     foreign_key: :photographer_id,
     class_name: "Post"
 
+  has_many :comments,
+    foreign_key: :author_id,
+    class_name: "Comment"
+
   def self.find_by_credentials(username, password) 
     user = User.find_by(username: username) || User.find_by(email: username)
     user && user.is_password?(password) ? user : nil
