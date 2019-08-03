@@ -1,8 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 class PostShow extends React.Component {
   componentDidMount() {
-    this.props.fetchPost(this.props.match.params.postId)
+    const postId = this.props.match.params.postId;
+    this.props.fetchPost(postId);
+    this.props.fetchCommentsByPostId(postId);
   }
 
   componentDidUpdate(prevProps) {

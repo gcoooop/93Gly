@@ -2,7 +2,6 @@ import * as CommentUtil from "../util/comment_util";
 
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
-export const CREATE_COMMENT = "CREATE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
 export const receiveComments = comments => {
@@ -28,8 +27,8 @@ export const removeComment = comment => {
 
 export const fetchCommentsByPostId = postId => {
   return dispatch => {
-    return CommentUtil.fetchComments(postId)
-      .then( comments => receiveComments(comments) );
+    return CommentUtil.fetchCommentsByPostId(postId)
+      .then( comments => dispatch(receiveComments(comments)) );
   };
 };
 

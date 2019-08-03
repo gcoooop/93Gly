@@ -1,4 +1,4 @@
-class Api::CommentController < ApplicationController
+class Api::CommentsController < ApplicationController
 
   def index
     @comments = Comment.where(post_id: params[:post_id])
@@ -12,7 +12,7 @@ class Api::CommentController < ApplicationController
     if @comment.save
       render :show
     else
-      render :json @comment.errors.full_messages, status: 404
+      render json: @comment.errors.full_messages, status: 404
     end
   end
 

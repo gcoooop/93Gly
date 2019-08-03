@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { fetchPost } from "../../actions/post_actions";
+import { fetchCommentsByPostId } from "../../actions/comment_actions";
 import PostShow from "./post_show";
 
 const mstp = (state, ownProps) => {
@@ -14,7 +15,8 @@ const mstp = (state, ownProps) => {
 
 const mdtp = dispatch => {
   return {
-    fetchPost: id => dispatch(fetchPost(id))
+    fetchPost: id => dispatch(fetchPost(id)),
+    fetchCommentsByPostId: postId => dispatch(fetchCommentsByPostId(postId))
   };
 };
 
