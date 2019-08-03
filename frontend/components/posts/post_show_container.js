@@ -5,11 +5,19 @@ import PostShow from "./post_show";
 
 const mstp = (state, ownProps) => {
   const post = state.entities.posts[ownProps.match.params.postId];
+  
+  const comments = [];
+  
   let photographer;
-  if (post) photographer = state.entities.users[post.photographerId];
+  if (post) {
+    photographer = state.entities.users[post.photographerId];
+    post.commentIds.forEach(commentId => comments.push(state.entities.comments[commentId]));
+  };
+
   return {
     post,
-    photographer
+    photographer,
+    comments
   };
 };
 
