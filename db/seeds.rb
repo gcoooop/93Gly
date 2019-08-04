@@ -22,7 +22,9 @@ post = Post.create!(title: "Dumbbell Nebula", caption: "Photo credit to gcoooop"
 file = open('http://93gly-seeds.s3.amazonaws.com/dumbbell_nebula.PNG')
 post.photo.attach(io: file, filename: "dumbbell_nebula.PNG")
 Comment.create!(body: "Wow great photo!", post_id: post.id, author_id: earthling.id)
-Comment.create!(body: "Thanks! I think it was beginner's luck...", post_id: post.id, author_id: gcoooop.id)
+Comment.create!(body: "EXCELLENT PHOTO HUMAN", post_id: post.id, author_id: martian.id)
+Comment.create!(body: "Prettay, prettay, prettay, prettay good", post_id: post.id, author_id: dave.id)
+Comment.create!(body: "Thanks everybody! I think it was beginner's luck...", post_id: post.id, author_id: gcoooop.id)
 
 post = Post.create!(title: "M2", caption: "Photo credit to gcoooop", photographer_id: gcoooop.id)
 file = open('http://93gly-seeds.s3.amazonaws.com/M2.PNG')

@@ -4,17 +4,17 @@ export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
-export const receiveComments = comments => {
+export const receiveComments = payload => {
   return {
     type: RECEIVE_COMMENTS,
-    comments
+    payload
   };
 };
 
-export const receiveComment = comment => {
+export const receiveComment = payload => {
   return {
     type: RECEIVE_COMMENT,
-    comment
+    payload
   };
 };
 

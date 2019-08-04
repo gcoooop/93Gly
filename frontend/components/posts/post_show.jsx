@@ -21,7 +21,7 @@ class PostShow extends React.Component {
       return <div className="loading">Loading...</div>;
     }
     
-    const commentLis = comments.map( comment => <Comment key={comment.id} comment={comment} /> );
+    // const commentLis = comments.map( comment => <Comment key={comment.id} comment={comment} /> );
 
     return (
       <div className="show-page">
@@ -50,7 +50,7 @@ class PostShow extends React.Component {
           <div className="details-container-right">
             <div className="comments">
               <ul className="comments-list">
-                { commentLis }
+                {/* { commentLis } */}
               </ul>
             </div>
           </div>
