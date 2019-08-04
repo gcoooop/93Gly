@@ -2,6 +2,7 @@ json.set! comment.id do
   json.comment do
     json.extract! comment, :id, :body
     json.authorId comment.author_id
+    json.author comment.author.username
     json.postId comment.post_id
   end
 

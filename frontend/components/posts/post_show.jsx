@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import Comment from "../comments/comment";
 
 class PostShow extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     const postId = this.props.match.params.postId;
-    this.props.fetchPost(postId);
     this.props.fetchCommentsByPostId(postId);
+    this.props.fetchPost(postId);
   }
 
   componentDidUpdate(prevProps) {
@@ -20,8 +20,7 @@ class PostShow extends React.Component {
     if (!post || !photographer) {
       return <div className="loading">Loading...</div>;
     }
-    
-    // const commentLis = comments.map( comment => <Comment key={comment.id} comment={comment} /> );
+    const commentLis = comments.map( comment => <Comment key={comment.id} comment={comment} /> );
 
     return (
       <div className="show-page">
@@ -50,7 +49,7 @@ class PostShow extends React.Component {
           <div className="details-container-right">
             <div className="comments">
               <ul className="comments-list">
-                {/* { commentLis } */}
+                { commentLis }
               </ul>
             </div>
           </div>
