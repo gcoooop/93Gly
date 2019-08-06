@@ -59,6 +59,7 @@ class PostShow extends React.Component {
           </div>
           <div className="details-container-right">
             <div className="comments">
+              <h4 className="comments-header">{`${comments.length} Comments`}</h4>
               <ul className="comments-list">
                 { commentLis }
               </ul>

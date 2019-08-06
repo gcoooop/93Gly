@@ -4,12 +4,18 @@ import formatDate from "../../util/date_format_util";
 const Comment = props => {
   const displayedDate = formatDate(props.comment.createdAt);
   return (
-    <li>
-      <div>
-        <span>{props.comment.author}</span>
-        <span>{displayedDate}</span>
+    <li className="comment-container">
+      <div className="comment-info">
+        <span className="comment-author">{props.comment.author}</span>
+        <span className="comment-date">{displayedDate}</span>
       </div>
-      <p>{props.comment.body}</p>
+      <div className="comment-body">
+        <p>{props.comment.body}</p>
+      </div>
+      <div className="comment-controls">
+        {/* reply here */}
+        {/* elipses */}
+      </div>
     </li>
   );
 };

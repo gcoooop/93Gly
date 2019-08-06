@@ -1,0 +1,24 @@
+.comment-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 24px;
+  font-size: 18px;
+  color: #222222;
+  line-height: 21px;
+  .comment-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .comment-author {
+      font-weight: 700;
+    }
+    .comment-date {
+      color: #6d7378;
+      font-size: 12px;
+    }
+  }
+  .comment-body {
+
+  }
+}
