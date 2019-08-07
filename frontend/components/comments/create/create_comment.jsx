@@ -22,6 +22,7 @@ class CreateComment extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.createComment(this.state);
+    this.props.setState({ body: "" });
   }
 
   render() {

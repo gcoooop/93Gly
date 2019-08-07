@@ -28,7 +28,7 @@ class PostShow extends React.Component {
     // which results in an error
     let commentLis
     try {
-      commentLis = comments.map( comment => <Comment key={comment.id} comment={comment} /> );
+      commentLis = comments.reverse().map( comment => <Comment key={comment.id} comment={comment} /> );
     } catch (error) {
       // doesnt need to do anything
       // console.log(error)
