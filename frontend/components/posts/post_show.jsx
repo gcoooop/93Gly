@@ -34,7 +34,7 @@ class PostShow extends React.Component {
       // console.log(error)
     }
 
-    const createCommentEle = loggedIn ? <CreateCommentContainer /> : null;
+    const createCommentEle = loggedIn ? <CreateCommentContainer postId={this.props.match.params.postId}/> : null;
 
     return (
       <div className="show-page">

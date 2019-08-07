@@ -3,7 +3,7 @@ import React from "react";
 class CreateComment extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { body: "" };
+    this.state = { body: "", postId: props.postId };
 
     this.handleInput = this.handleInput.bind(this);
     this.cancelComment = this.cancelComment.bind(this);
@@ -11,21 +11,23 @@ class CreateComment extends React.Component {
   }
 
   handleInput(event) {
-
+    this.setState({ body: event.target.value });
   }
 
   cancelComment(event) {
-    
+    event.preventDefault();
+    this.setState({ body: "" });
   }
 
   handleSubmit(event) {
-
+    event.preventDefault();
+    this.props.createComment(this.state);
   }
 
   render() {
     const commentControls = this.state.body ? (
       <div className="comment-create-controls">
-        <button className="create-comment-cancel" onCLick={this.cancelComment}>Cancel</button>
+        <button className="create-comment-cancel" onClick={this.cancelComment}>Cancel</button>
         <button className="create-comment-submit" onClick={this.handleSubmit}>Comment</button>
       </div>
     ) : null;

@@ -1,4 +1,5 @@
 import { RECEIVE_POSTS, RECEIVE_POST, REMOVE_POST } from "../actions/post_actions";
+import { RECEIVE_COMMENT } from "../actions/comment_actions";
 
 const PostsReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -16,6 +17,17 @@ const PostsReducer = (state = {}, action) => {
       const newState = Object.assign({}, state);
       delete newState[action.postId];
       return newState;
+
+    case RECEIVE_COMMENT:
+      const { comment } = Object.values(action.payload)[0];
+      const commentedPost = state[comment.postId];
+      const newCommentedPost = Object.assign({}, commentedPost);
+      
+      if (!commentedPost.commentIds.includes(comment.id)) {
+        newCommentedPost.commentIds.push(comment.id);
+      }
+
+      return Object.assign({}, state, newCommentedPost);  
 
     default:
       return state;

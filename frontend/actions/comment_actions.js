@@ -35,7 +35,7 @@ export const fetchCommentsByPostId = postId => {
 export const createComment = comment => {
   return dispatch => {
     return CommentUtil.createComment(comment)
-      .then( comment => dispatch(receiveComment(comment)) );
+      .then( payload => dispatch(receiveComment(payload)) );
   };
 };
 
