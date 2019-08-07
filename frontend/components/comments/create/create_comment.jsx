@@ -22,14 +22,14 @@ class CreateComment extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     this.props.createComment(this.state);
-    this.props.setState({ body: "" });
+    this.setState({ body: "" });
   }
 
   render() {
     const commentControls = this.state.body ? (
       <div className="comment-create-controls">
-        <button className="create-comment-cancel" onClick={this.cancelComment}>Cancel</button>
-        <button className="create-comment-submit" onClick={this.handleSubmit}>Comment</button>
+        <button className="comment-create-cancel" onClick={this.cancelComment}>Cancel</button>
+        <button className="comment-create-submit" onClick={this.handleSubmit}>Comment</button>
       </div>
     ) : null;
 
@@ -40,7 +40,7 @@ class CreateComment extends React.Component {
         </div>
         <div className="comment-create-input">
           <textarea placeholder="Add a comment" value={this.state.body} onChange={this.handleInput}/>
-          <div><i className="far fa-comment"></i></div>
+          <div className="comment-create-icon-container"><i className="far fa-comment"></i></div>
         </div>
         { commentControls }
       </div>
