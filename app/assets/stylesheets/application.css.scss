@@ -24,7 +24,10 @@
  *= post_show.scss
  *= comment.scss
  */
- 
+
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
  html, body {
    height: 100%;
    margin: 0;

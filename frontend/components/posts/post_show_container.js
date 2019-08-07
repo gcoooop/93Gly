@@ -15,7 +15,8 @@ const mstp = (state, ownProps) => {
   return {
     post,
     photographer,
-    comments
+    comments,
+    loggedIn: !!state.session.currentUserId
   };
 };
 

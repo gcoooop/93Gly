@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Comment from "../comments/comment";
+import CreateCommentContainer from "../comments/create/create_comment_container";
 
 class PostShow extends React.Component {
   componentDidMount() {
@@ -16,7 +17,7 @@ class PostShow extends React.Component {
   }
 
   render() {
-    const { post, photographer, comments } = this.props;
+    const { post, photographer, comments, loggedIn } = this.props;
     if (!post || !photographer) {
       return <div className="loading">Loading...</div>;
     }
@@ -32,6 +33,8 @@ class PostShow extends React.Component {
       // doesnt need to do anything
       // console.log(error)
     }
+
+    const createCommentEle = loggedIn ? <CreateCommentContainer /> : null;
 
     return (
       <div className="show-page">
@@ -60,6 +63,7 @@ class PostShow extends React.Component {
           <div className="details-container-right">
             <div className="comments">
               <h4 className="comments-header">{`${comments.length} Comments`}</h4>
+              { createCommentEle }
               <ul className="comments-list">
                 { commentLis }
               </ul>
