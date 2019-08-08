@@ -9,11 +9,11 @@
       height: 56px;
       min-height: 56px;
       max-height: 176px;
-      overflow-y: hidden;
       resize: none;
       border-radius: 4px;
       border-color: black;
       padding: 16px;
+      padding-right: 56px;
       font-size: 18px;
       box-sizing: border-box;
       &:focus {
@@ -55,6 +55,14 @@
       background: #0870d1;
       &:hover {
         background: #2986f7;
+      }
+      &:disabled {
+        cursor: default;
+        opacity: 0.25;
+        background: #0870d1;
+        &:hover {
+          background: #0870d1;
+        }
       }
     }
   }
