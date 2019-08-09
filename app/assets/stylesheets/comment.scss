@@ -19,6 +19,24 @@
     }
   }
   .comment-body {
-
+    margin-top: 4px;
+  }
+  .comment-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6d7378;
+    font-size: 16px;
+    margin-top: 4px;
+    span:hover {
+      cursor: pointer;  
+    }
+    i {
+      font-size: 18px;
+      &:hover {
+        cursor: pointer;  
+        color: red;
+      }
+    }
   }
 }
