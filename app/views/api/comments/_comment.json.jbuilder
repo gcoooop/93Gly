@@ -4,6 +4,7 @@ json.set! comment.id do
     json.authorId comment.author_id
     json.author comment.author.username
     json.postId comment.post_id
+    json.replyIds comment.reply_ids
     json.createdAt comment.created_at
   end
 

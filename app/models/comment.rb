@@ -18,4 +18,15 @@ class Comment < ApplicationRecord
   belongs_to :author,
     foreign_key: :author_id,
     class_name: "User"
+
+  belongs_to :parent,
+    foreign_key: :parent_id,
+    class_name: "Comment",
+    optional: true
+
+  has_many :replies,
+    foreign_key: :parent_id,
+    class_name: "Comment",
+    dependent: :destroy
+
 end
