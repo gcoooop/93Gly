@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Comment from "../comments/comment";
+import CommentContainer from "../comments/comment_container";
 import CreateCommentContainer from "../comments/create/create_comment_container";
 
 class PostShow extends React.Component {
@@ -28,7 +28,7 @@ class PostShow extends React.Component {
     // which results in an error
     let commentLis
     try {
-      commentLis = comments.reverse().map( comment => <Comment key={comment.id} comment={comment} /> );
+      commentLis = comments.reverse().map( comment => <CommentContainer key={comment.id} comment={comment} /> );
     } catch (error) {
       // doesnt need to do anything
       // console.log(error)

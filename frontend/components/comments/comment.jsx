@@ -3,6 +3,10 @@ import formatDate from "../../util/date_format_util";
 
 const Comment = props => {
   const displayedDate = formatDate(props.comment.createdAt);
+  const deleteButton = props.currentUserId === props.comment.authorId 
+    ? <i className="far fa-trash-alt" onClick={() => props.deleteComment(props.comment)}/>
+    : null;
+
   return (
     <li className="comment-container">
       <div className="comment-info">
@@ -13,8 +17,8 @@ const Comment = props => {
         <p>{props.comment.body}</p>
       </div>
       <div className="comment-controls">
-        {/* reply here */}
-        {/* elipses */}
+        <span>Reply</span>
+        { deleteButton }
       </div>
     </li>
   );

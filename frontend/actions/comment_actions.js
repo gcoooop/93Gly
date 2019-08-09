@@ -18,10 +18,11 @@ export const receiveComment = payload => {
   };
 };
 
-export const removeComment = comment => {
+export const removeComment = payload => {
+  const comment = Object.values(payload)[0].comment;
   return {
     type: REMOVE_COMMENT,
-    id: comment.id
+    comment
   };
 };
 
@@ -41,7 +42,7 @@ export const createComment = comment => {
 
 export const deleteComment = comment => {
   return dispatch => {
-    return Comment.deleteComment(comment)
-      .then( comment => dispatch(removeComment(comment)) );
+    return CommentUtil.deleteComment(comment)
+      .then( payload => dispatch(removeComment(payload)) );
   };
 };

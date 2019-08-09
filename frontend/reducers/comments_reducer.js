@@ -17,7 +17,7 @@ const CommentsReducer = (state = {}, action) => {
       return newState;
 
     case REMOVE_COMMENT:
-      newState = Object.assign( {}, state );
+      newState = Object.assign({}, state);
       delete newState[action.comment.id];
       return newState;
       
