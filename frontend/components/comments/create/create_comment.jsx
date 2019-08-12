@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 class CreateComment extends React.Component {
   constructor(props) {
@@ -35,12 +36,12 @@ class CreateComment extends React.Component {
 
   cancelComment(event) {
     event.preventDefault();
-    this.setState({ body: "" });
+    this.setState({ body: "", showCommentControls: false });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const comment = { body: this.state.body, postId: this.props.postId };
+    const comment = { body: this.state.body, postId: this.props.match.params.postId, parent_id: this.props.parentId };
     this.props.createComment(comment);
     this.setState({ body: "", showCommentControls: false });
   }
@@ -75,4 +76,4 @@ class CreateComment extends React.Component {
   }
 }
 
-export default CreateComment;
+export default withRouter(CreateComment);

@@ -11,7 +11,10 @@ class PostShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.postId != this.props.match.params.postId) {
+    if (
+      prevProps.match.params.postId != this.props.match.params.postId 
+      || prevProps.comments.length > this.props.comments.length
+      ) {
       this.props.fetchPost(this.props.match.params.postId);
     }
   }
@@ -34,7 +37,7 @@ class PostShow extends React.Component {
       // console.log(error)
     }
 
-    const createCommentEle = loggedIn ? <CreateCommentContainer postId={this.props.match.params.postId}/> : null;
+    const createCommentEle = loggedIn ? <CreateCommentContainer parentId={null}/> : null;
 
     return (
       <div className="show-page">

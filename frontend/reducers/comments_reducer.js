@@ -12,7 +12,13 @@ const CommentsReducer = (state = {}, action) => {
       return newState;
 
     case RECEIVE_COMMENT:
-      Object.values(action.payload).forEach(val => comments[val.comment.id] = val.comment);
+      const receivedComment = Object.values(action.payload)[0].comment;
+      comments[receivedComment.id] = receivedComment;
+      if (receivedComment.parentId) {
+        const parentComment = state[receivedComment.parentId];
+        parentComment.replyIds.push(receivedComment.id);
+        comments[parentComment.id] = parentComment;
+      }
       newState = Object.assign({}, state, comments);
       return newState;
 
