@@ -24,14 +24,18 @@ class PostShow extends React.Component {
     if (!post || !photographer) {
       return <div className="loading">Loading...</div>;
     }
-
+    
     // commentLis are created in a try-catch block because the component is rendered
     // before the response returns from the backend with the comments and users info.
     // when the Comment "key" prop is created, it tries to read comment.id of undefined
     // which results in an error
     let commentLis
     try {
-      commentLis = comments.reverse().map( comment => <CommentContainer key={comment.id} comment={comment} /> );
+      commentLis = comments.reverse().map( comment => {
+        if (comment.parentId === null) {
+          return <CommentContainer key={comment.id} comment={comment} />;
+        }
+      });
     } catch (error) {
       // doesnt need to do anything
       // console.log(error)

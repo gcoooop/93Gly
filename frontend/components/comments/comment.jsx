@@ -1,6 +1,7 @@
 import React from "react";
 import formatDate from "../../util/date_format_util";
 import CreateCommentContainer from "./create/create_comment_container";
+import CommentContainer from "./comment_container";
 
 class Comment extends React.Component {
   constructor(props) {
@@ -27,7 +28,13 @@ class Comment extends React.Component {
     const replyEle = this.state.createReply
       ? <CreateCommentContainer parentId={this.props.comment.id}/>
       : null;
-
+    const repliesUl = this.props.replies.length
+      ? (
+        <ul className="comment-replies-list">
+          {this.props.replies.reverse().map(reply => <CommentContainer key={reply.id} comment={reply}/> )}
+        </ul>
+      )
+      : null;
     return (
       <li className="comment-container">
         <div className="comment-info">
@@ -42,6 +49,7 @@ class Comment extends React.Component {
           { deleteButton }
         </div>
         { replyEle }
+        { repliesUl }
       </li>
     );    
   }

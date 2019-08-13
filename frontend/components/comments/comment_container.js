@@ -2,9 +2,11 @@ import { connect } from "react-redux";
 import Comment from "./comment";
 import { deleteComment, fetchCommentsByPostId } from "../../actions/comment_actions";
 
-const mstp = state => {
+const mstp = (state, ownProps) => {
+  const replies = ownProps.comment.replyIds.map( replyId => state.entities.comments[replyId] );
   return {
-    currentUserId: state.session.currentUserId
+    currentUserId: state.session.currentUserId,
+    replies
   };
 };
 

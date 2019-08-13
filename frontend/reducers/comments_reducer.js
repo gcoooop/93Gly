@@ -25,6 +25,13 @@ const CommentsReducer = (state = {}, action) => {
     case REMOVE_COMMENT:
       newState = Object.assign({}, state);
       delete newState[action.comment.id];
+      // removes comment from parents replies array
+      let newParentComment
+      if (action.comment.parentId) {
+        newParentComment = newState[action.comment.parentId];
+        newParentComment.replyIds = newParentComment.replyIds.filter(replyId => replyId !== action.comment.id);
+        newState[action.comment.parentId] = newParentComment;
+      }
       return newState;
       
     default:
