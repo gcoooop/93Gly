@@ -15,8 +15,10 @@ class CreateComment extends React.Component {
 
   toggleCommentControls(event) {
     if (this.state.showCommentControls) {
-      if (!this.state.body){
+      if (!this.state.body) {
         this.setState({ showCommentControls: false });
+        // calls instance method on comment.jsx
+        if (this.props.hideCreateReply) this.props.hideCreateReply();
       }
     } else {
       this.setState({ showCommentControls: true });
@@ -37,6 +39,8 @@ class CreateComment extends React.Component {
   cancelComment(event) {
     event.preventDefault();
     this.setState({ body: "", showCommentControls: false });
+        // calls instance method on comment.jsx
+    if (this.props.hideCreateReply) this.props.hideCreateReply();
   }
 
   handleSubmit(event) {
@@ -44,6 +48,8 @@ class CreateComment extends React.Component {
     const comment = { body: this.state.body, postId: this.props.match.params.postId, parent_id: this.props.parentId };
     this.props.createComment(comment);
     this.setState({ body: "", showCommentControls: false });
+    // calls instance method on comment.jsx
+    if (this.props.hideCreateReply) this.props.hideCreateReply();
   }
 
   render() {
@@ -67,6 +73,7 @@ class CreateComment extends React.Component {
             onChange={this.handleInput} 
             onFocus={this.toggleCommentControls}
             onBlur={this.toggleCommentControls}
+            autoFocus={this.props.focus}
           />
           <div className="comment-create-icon-container"><i className="far fa-comment"></i></div>
         </div>

@@ -10,6 +10,7 @@ class Comment extends React.Component {
 
     this.deleteComment = this.deleteComment.bind(this);
     this.showCreateReply = this.showCreateReply.bind(this);
+    this.hideCreateReply = this.hideCreateReply.bind(this);
   }
 
   deleteComment(event) {
@@ -20,13 +21,17 @@ class Comment extends React.Component {
     this.setState({ createReply: true });
   }
 
+  hideCreateReply(event) {
+    this.setState({ createReply: false });
+  }
+  
   render() {
     const displayedDate = formatDate(this.props.comment.createdAt);
     const deleteButton = this.props.currentUserId === this.props.comment.authorId
       ? <i className="far fa-trash-alt" onClick={this.deleteComment} />
       : null;
     const replyEle = this.state.createReply
-      ? <CreateCommentContainer parentId={this.props.comment.id}/>
+      ? <CreateCommentContainer parentId={this.props.comment.id} focus={true} hideCreateReply={this.hideCreateReply}/>
       : null;
     const repliesUl = this.props.replies.length
       ? (
