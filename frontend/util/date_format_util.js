@@ -8,7 +8,7 @@ const formatPostTime = createdAt => {
   const now = new Date();
   const date = new Date(createdAt);
   const timeAgo = now - date;
-  const daysAgo = now.getDay() - date.getDay();
+  const daysAgo = Math.floor(timeAgo / (24 * 60 * 60 * 1000));
 
   switch (true) {
     // < 12 hours ago --- x hours ago
