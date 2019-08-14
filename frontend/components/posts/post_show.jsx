@@ -1,22 +1,48 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CommentContainer from "../comments/comment_container";
+import CreateCommentContainer from "../comments/create/create_comment_container";
+
 class PostShow extends React.Component {
   componentDidMount() {
-    this.props.fetchPost(this.props.match.params.postId)
+    const postId = this.props.match.params.postId;
+    this.props.fetchCommentsByPostId(postId);
+    this.props.fetchPost(postId);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.match.params.postId != this.props.match.params.postId) {
+    if (
+      prevProps.match.params.postId != this.props.match.params.postId 
+      || prevProps.comments.length > this.props.comments.length
+      ) {
       this.props.fetchPost(this.props.match.params.postId);
     }
   }
 
   render() {
-    const { post, photographer } = this.props;
+    const { post, photographer, comments, loggedIn } = this.props;
     if (!post || !photographer) {
       return <div className="loading">Loading...</div>;
     }
     
+    // commentLis are created in a try-catch block because the component is rendered
+    // before the response returns from the backend with the comments and users info.
+    // when the Comment "key" prop is created, it tries to read comment.id of undefined
+    // which results in an error
+    let commentLis
+    try {
+      commentLis = comments.reverse().map( comment => {
+        if (comment.parentId === null) {
+          return <CommentContainer key={comment.id} comment={comment} />;
+        }
+      });
+    } catch (error) {
+      // doesnt need to do anything
+      // console.log(error)
+    }
+
+    const createCommentEle = loggedIn ? <CreateCommentContainer parentId={null}/> : null;
+
     return (
       <div className="show-page">
         <div className="photo-container">
@@ -43,7 +69,11 @@ class PostShow extends React.Component {
           </div>
           <div className="details-container-right">
             <div className="comments">
-              {/* comments section */}
+              <h4 className="comments-header">{`${comments.length} Comments`}</h4>
+              { createCommentEle }
+              <ul className="comments-list">
+                { commentLis }
+              </ul>
             </div>
           </div>
         </div>

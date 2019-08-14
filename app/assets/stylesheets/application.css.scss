@@ -22,8 +22,13 @@
  *= create_post_form.scss
  *= posts_grid.scss
  *= post_show.scss
+ *= comment.scss
+ *= create_comment.scss
  */
- 
+
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+
  html, body {
    height: 100%;
    margin: 0;
