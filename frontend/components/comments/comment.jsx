@@ -36,6 +36,7 @@ class Comment extends React.Component {
     const repliesUl = this.props.replies.length
       ? (
         <ul className="comment-replies-list">
+          <div className="comment-replies-left-bar" onClick={this.toggleRepliesEle}/>
           {this.props.replies.reverse().map(reply => <CommentContainer key={reply.id} comment={reply}/> )}
         </ul>
       )

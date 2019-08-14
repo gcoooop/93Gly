@@ -55,7 +55,7 @@
   flex-direction: row;
   padding: 0 128px;
   .details-container-left {
-    width: 60%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     margin-top: 32px;
@@ -89,7 +89,7 @@
     }
   }
   .details-container-right {
-    width: 40%;
+    width: 50%;
     .comments-header {
       font-size: 18px;
     }
