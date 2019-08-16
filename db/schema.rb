@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 2019_08_16_212922) do
     t.index ["post_id"], name: "index_comments_on_post_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.integer "post_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id", "user_id"], name: "index_likes_on_post_id_and_user_id", unique: true
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.string "caption", default: "", null: false
