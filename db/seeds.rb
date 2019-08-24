@@ -25,6 +25,10 @@ Comment.create!(body: "Wow great photo!", post_id: post.id, author_id: earthling
 Comment.create!(body: "EXCELLENT PHOTO HUMAN", post_id: post.id, author_id: martian.id)
 Comment.create!(body: "Prettay, prettay, prettay good", post_id: post.id, author_id: hal.id)
 Comment.create!(body: "Thanks everybody! I think it was beginner's luck...", post_id: post.id, author_id: gcoooop.id)
+Like.create!(user_id: earthling.id, post_id: post.id)
+Like.create!(user_id: martian.id, post_id: post.id)
+Like.create!(user_id: dave.id, post_id: post.id)
+Like.create!(user_id: hal.id, post_id: post.id)
 
 post = Post.create!(title: "M2", caption: "Photo credit to gcoooop", photographer_id: gcoooop.id)
 file = open('http://93gly-seeds.s3.amazonaws.com/M2.PNG')

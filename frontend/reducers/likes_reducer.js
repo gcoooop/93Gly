@@ -1,11 +1,13 @@
-import { RECEIVE_LIKES, REMOVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
+import { RECEIVE_LIKES, RECEIVE_LIKE, REMOVE_LIKE } from "../actions/like_actions";
 
 const LikesReducer = (state = {}, action) => {
   Object.freeze(state);
 
   switch (action.type) {
     case RECEIVE_LIKES:
-      return Object.assign({}, state, action.likes);
+      const receviedLikes = {};
+      Object.values(action.payload).forEach( ele => receviedLikes[ele.like.id] = ele.like );
+      return Object.assign({}, state, receviedLikes);
 
     case RECEIVE_LIKE:
       const receviedLike = { [action.like.id]: action.like };
@@ -17,7 +19,7 @@ const LikesReducer = (state = {}, action) => {
       return newState;
 
     default:
-      break;
+      return state;
   }
 };
 

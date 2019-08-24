@@ -2,6 +2,7 @@ import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 import { RECEIVE_POST } from "../actions/post_actions";
 import { RECEIVE_COMMENTS } from "../actions/comment_actions";
+import { RECEIVE_LIKES } from "../actions/like_actions";
 
 const UsersReducer = (state = {}, action) => {
   Object.freeze(state);
@@ -19,9 +20,14 @@ const UsersReducer = (state = {}, action) => {
       return Object.assign({}, state, action.payload.user)
 
     case RECEIVE_COMMENTS:
-      const users = {};
-      Object.values(action.payload).forEach( val => users[val.user.id] = val.user );
-      return Object.assign({}, state, users);
+      const commenters = {};
+      Object.values(action.payload).forEach( val => commenters[val.user.id] = val.user );
+      return Object.assign({}, state, commenters);
+
+    case RECEIVE_LIKES:
+      const likers = {};
+      Object.values(action.payload).forEach(ele => likers[ele.user.id] = ele.user);
+      return Object.assign({}, state, likers);
 
     default:
       return state;
