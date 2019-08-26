@@ -10,7 +10,8 @@ const LikesReducer = (state = {}, action) => {
       return Object.assign({}, state, receviedLikes);
 
     case RECEIVE_LIKE:
-      const receviedLike = { [action.like.id]: action.like };
+      const receviedLikeId = Object.keys(action.like)[0];
+      const receviedLike = { [receviedLikeId]: action.like[receviedLikeId].like };
       return Object.assign({}, state, receviedLike);
 
     case REMOVE_LIKE:

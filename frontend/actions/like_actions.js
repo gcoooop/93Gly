@@ -40,8 +40,9 @@ export const createLike = like => {
 };
 
 export const deleteLike = like => {
+  const likeId = like.id;
   return dispatch => {
-    return LikeUtil.deleteLike(like)
-      .then( like => dispatch(removeLike(like.id)));
+    return LikeUtil.deleteLike(likeId)
+      .then( like => dispatch(removeLike(likeId)) );
   };
 };

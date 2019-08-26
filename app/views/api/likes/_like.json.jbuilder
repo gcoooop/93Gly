@@ -1,6 +1,8 @@
 json.set! like.id do
   json.like do
-    json.extract! like, :id, :post_id, :user_id
+    json.extract! like, :id
+    json.postId like.post_id
+    json.userId like.user_id
   end
 
   json.user do
