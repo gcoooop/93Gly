@@ -11,17 +11,17 @@ export const receiveLikes = payload => {
   };
 };
 
-export const receiveLike = like => {
+export const receiveLike = payload => {
   return {
     type: RECEIVE_LIKE,
-    like
+    payload
   };
 };
 
-export const removeLike = likeId => {
+export const removeLike = payload => {
   return {
     type: REMOVE_LIKE,
-    likeId
+    payload
   };
 };
 
@@ -43,6 +43,6 @@ export const deleteLike = like => {
   const likeId = like.id;
   return dispatch => {
     return LikeUtil.deleteLike(likeId)
-      .then( like => dispatch(removeLike(likeId)) );
+      .then( like => dispatch(removeLike(like)) );
   };
 };
