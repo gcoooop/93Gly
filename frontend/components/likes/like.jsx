@@ -29,12 +29,13 @@ class Like extends React.Component {
   }
 
   render() {
+    const { postId } = this.props;
     return (
       <div className="likes-container">
         <div className="likes-button" onClick={this.toggleLike}>
           {this.state.isLiked ? <i className="fas fa-heart"></i> : <i className="far fa-heart"></i> }
         </div>
-        <span className="likes-count">{this.props.likes.length}</span>
+        <span className="likes-count" onClick={() => this.props.openModal("LikeIndexContainer", {postId})}>{this.props.likes.length}</span>
       </div>
     );
   }

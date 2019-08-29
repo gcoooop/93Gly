@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import { fetchLikesByPostId, createLike, deleteLike } from "../../actions/like_actions";
+import { openModal } from "../../actions/modal_actions";
 import Like from "./like";
 
 const mstp = (state, ownProps) => {
@@ -23,7 +24,8 @@ const mdtp = dispatch => {
   return {
     fetchLikesByPostId: postId => dispatch(fetchLikesByPostId(postId)),
     createLike: like => dispatch(createLike(like)),
-    deleteLike: like => dispatch(deleteLike(like))
+    deleteLike: like => dispatch(deleteLike(like)),
+    openModal: modal => dispatch(openModal(modal))
   };
 };
 
