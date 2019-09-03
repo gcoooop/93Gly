@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { fetchPost } from "../../actions/post_actions";
 import { fetchCommentsByPostId } from "../../actions/comment_actions";
+import { closeModal } from "../../actions/modal_actions";
 import PostShow from "./post_show";
 
 const mstp = (state, ownProps) => {
@@ -26,7 +27,8 @@ const mdtp = dispatch => {
   return {
     fetchPost: id => dispatch(fetchPost(id)),
     fetchCommentsByPostId: postId => dispatch(fetchCommentsByPostId(postId)),
-    fetchLikesByPostId: postId => dispatch(fetchLikesByPostId(postId))
+    fetchLikesByPostId: postId => dispatch(fetchLikesByPostId(postId)),
+    closeModal: () => dispatch(closeModal())
   };
 };
 

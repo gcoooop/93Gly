@@ -11,6 +11,10 @@ class PostShow extends React.Component {
     this.props.fetchPost(postId);
   }
 
+  componentWillUnmount() {
+    this.props.closeModal();
+  }
+  
   componentDidUpdate(prevProps) {
     if (
       prevProps.match.params.postId != this.props.match.params.postId 
