@@ -6,12 +6,12 @@ const LikeIndex = props => {
 
   return (
     <div className="like-index-container">
-      <div className="likes-index-header">
-        <div className="likesindex-header-container">
-          <span className="likes-index-header-title">Likes</span>
-          <span className="likes-index-header-count">•&nbsp; {props.likes.length}</span>
+      <div className="like-index-header-container">
+        <div className="like-index-header">
+          <span className="like-index-header-title">Likes</span>
+          <span className="like-index-header-count">&nbsp;•&nbsp;{props.likes.length}</span>
         </div>
-        <div className="likes-index-close" onClick={props.closeModal}><span>&times;</span></div>
+        <a className="like-index-close" onClick={props.closeModal}>&times;</a>
       </div>
       <ul className="like-index-list">
         { likeLis }

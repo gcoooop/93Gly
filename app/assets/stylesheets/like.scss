@@ -14,8 +14,12 @@
       color: inherit;
     }
   }
-  span {
+  .likes-count {
     margin-left: 16px;
     font-size: 18px;
+    &:hover {
+      cursor: pointer;
+      color: rgb(41, 134, 247);
+    }
   }
 }
