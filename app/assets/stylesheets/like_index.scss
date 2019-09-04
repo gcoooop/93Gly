@@ -1,0 +1,45 @@
+.like-index-container {
+  box-sizing: border-box;
+  padding: 16px;
+  max-height: 100%;
+  width: 450px;
+  border-radius: 8px;
+  background: white;
+  .like-index-header-container {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 0px 16px;
+    border-bottom: 1px solid rgb(215, 216, 219);
+    border-radius: 4px 4px 0 0;
+    background: #fff;
+    color: rgba(0,0,0,.65);
+    .like-index-header-title {
+      color: black;
+      font-weight: 700;
+    }
+    .like-index-close {
+      position: absolute;
+      right: -16px;
+      top: -16px;
+      text-align: center;
+      height: 52px;
+      width: 52px;
+      line-height: 42px;
+      font-size: 40px;
+      font-weight: 300;
+      &:hover {
+        cursor: pointer;
+        color: rgb(11, 112, 209);
+      }
+    }
+  }
+  .like-index-list {
+    list-style: none;
+    .like-index-list-item {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 700;
+    }
+  }
+}

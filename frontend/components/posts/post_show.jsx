@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import CommentContainer from "../comments/comment_container";
 import CreateCommentContainer from "../comments/create/create_comment_container";
+import LikeContainer from "../likes/like_container";
 
 class PostShow extends React.Component {
   componentDidMount() {
@@ -10,6 +11,10 @@ class PostShow extends React.Component {
     this.props.fetchPost(postId);
   }
 
+  componentWillUnmount() {
+    this.props.closeModal();
+  }
+  
   componentDidUpdate(prevProps) {
     if (
       prevProps.match.params.postId != this.props.match.params.postId 
@@ -54,6 +59,7 @@ class PostShow extends React.Component {
         <div className="details-container">
           <div className="details-container-left">
             <div className="post-buttons">
+              <LikeContainer postId={post.id}/>
               {/* like share more buttons */}
             </div>
             <div className="post-details">

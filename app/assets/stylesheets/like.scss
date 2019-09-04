@@ -1,0 +1,25 @@
+.likes-container {
+  display: inline-flex;
+  align-items: center;
+  .likes-button {
+    font-size: 28px;
+    &:hover {
+      cursor: pointer;
+      color: #c22b3f;
+    }
+    .fas {
+      color: #c22b3f;
+    }
+    .far {
+      color: inherit;
+    }
+  }
+  .likes-count {
+    margin-left: 16px;
+    font-size: 18px;
+    &:hover {
+      cursor: pointer;
+      color: rgb(41, 134, 247);
+    }
+  }
+}

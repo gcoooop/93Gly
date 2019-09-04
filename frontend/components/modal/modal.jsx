@@ -1,5 +1,6 @@
 import React from "react";
 import CreatePostFormContainer from "../posts/create/create_post_form_container";
+import LikeIndexContainer from "../likes/like_index_container";
 
 const Modal = ({ modal, closeModal, clearUploadedPostEntities }) => {
   let component;
@@ -10,6 +11,13 @@ const Modal = ({ modal, closeModal, clearUploadedPostEntities }) => {
       handleClick = () => {
         closeModal();
         clearUploadedPostEntities();
+      };
+      break;
+
+    case "LikeIndexContainer":
+      component = <LikeIndexContainer />;
+      handleClick = () => {
+        closeModal();
       };
       break;
     default:
