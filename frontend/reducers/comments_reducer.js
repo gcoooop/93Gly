@@ -12,7 +12,7 @@ const CommentsReducer = (state = {}, action) => {
       return newState;
 
     case RECEIVE_COMMENT:
-      const receivedComment = Object.values(action.payload)[0].comment;
+      const receivedComment = action.payload.comment;
       comments[receivedComment.id] = receivedComment;
       if (receivedComment.parentId) {
         const parentComment = state[receivedComment.parentId];
@@ -23,6 +23,7 @@ const CommentsReducer = (state = {}, action) => {
       return newState;
 
     case REMOVE_COMMENT:
+      debugger
       newState = Object.assign({}, state);
       delete newState[action.comment.id];
       // removes comment from parents replies array

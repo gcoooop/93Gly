@@ -19,10 +19,9 @@ export const receiveComment = payload => {
 };
 
 export const removeComment = payload => {
-  const comment = Object.values(payload)[0].comment;
   return {
     type: REMOVE_COMMENT,
-    comment
+    comment: payload.comment
   };
 };
 

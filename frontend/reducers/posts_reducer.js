@@ -20,7 +20,7 @@ const PostsReducer = (state = {}, action) => {
       return newState;
 
     case RECEIVE_COMMENT:
-      const receivedComment = Object.values(action.payload)[0].comment;
+      const receivedComment = action.payload.comment;
       const commentedPost = state[receivedComment.postId];
       const newCommentedPost = Object.assign({}, commentedPost);
       if (!commentedPost.commentIds.includes(receivedComment.id)) {
